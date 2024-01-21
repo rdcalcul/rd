@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>딜량 계산기</title>
+<script>
+function cal()
+{
+	var crit=Number(document.getElementById("crit").value);
+	var dill =document.getElementById("dill").value;
+	var clas =Number(document.getElementById("clas").value);
+	var dal=document.getElementById("dal").value;
+	var stack=document.getElementById("stack").value;
+	var dam;
+	var res;
+	crit/=100;
+	if(dal==1){
+		if(dill=="sav"){
+			dam = 180+clas*10;
+			while(stack>0){
+				dam=dam*(50+0.5*clas)+dam;
+				stack-=1;
+			}
+		}
+		if(dill=="ovl"){
+			dam=400;
+			while(stack>0){
+				dam=dam+dam*(0.3+0.01*clas);
+				stack-=1;
+				crit=crit+crit*(0.4+0.01*clas);
+			}
+		}
+		if(dill=="rech"){
+			dam=300+30*clas+5*stack*(stack-1);
+		}
+		if(dill=="sym"){
+			dam=30+(60+20*clas)*stack;
+		}
+		if(dill=="combo"){
+			dam=(12+2*clas)*(stack-1)*stack/2+90+10*clas;
+		}
+		dam=20*(0.65*dam+0.65*dam*crit*0.35);
+	}
+	if(dal==2){
+		if(dill=="sav"){
+			dam = 180+clas*10;
+			while(stack>0){
+				dam=dam*(50+0.5*clas)+dam;
+				stack-=1;
+			}
+		}
+		if(dill=="ovl"){
+			dam=400;
+			while(stack>0){
+				dam=dam+dam*(0.3+0.01*clas);
+				stack-=1;
+				crit=crit+crit*(0.4+0.01*clas);
+			}
+		}
+		if(dill=="rech"){
+			dam=300+30*clas+5*stack*(stack-1);
+			}
+		if(dill=="sym"){
+			dam=30+(60+20*clas)*stack;
+		}
+		if(dill=="combo"){
+			dam=(12+2*clas)*(stack-1)*stack/2+90+10*clas;
+		}
+        dam=20*(0.95*dam+dam*crit*0.05);
+	}
+	if(dal==3){
+		if(dill=="sav"){
+			dam = 180+clas*10;
+			while(stack>0){
+				dam=dam*(50+0.5*clas)+dam;
+				stack-=1;
+			}
+		}
+		if(dill=="ovl"){
+			dam=400;
+			while(stack>0){
+				dam=dam+dam*(0.3+0.01*clas);
+				stack-=1;
+				crit=crit+crit*(0.4+0.01*clas);
+			}
+		}
+		if(dill=="rech"){
+			dam=300+30*clas+5*stack*(stack-1);
+			}
+		if(dill=="sym"){
+			dam=30+(60+20*clas)*stack;
+		}
+		if(dill=="combo"){
+			dam=(12+2*clas)*(stack-1)*stack/2+90+10*clas;
+		}
+		dam=0.95*dam+0.65*dam*crit*0.05;
+	}
+	dam=Math.floor(dam);
+	document.getElementById("res").value = dam;
+}
+</script>
+</head>
+<body>
+<div>딜량 계산기입니다. 아래의 과정을 틀리지 않게 진행해주세요. </div><br><br>
+크리티컬을 입력해 주세요 : <input type="text" id="crit">
+<form action="#" >
+  <label for="lang">딜주사위를 선택하세요</label>
+  <select name="딜주사위" id="dill">
+	<option value="void">선택하세요</option>
+    <option value="sol">태양(준비중</option>
+    <option value="sav">수호자</option>
+    <option value="ovl">과열</option>
+    <option value="rech">충전</option>
+    <option value="sym">영혼수집</option>
+    <option value="combo">콤보</option>
+    <option value="ready">준비중....</option>
+  </select>
+</form><br>
+<form action="#" >
+  <label for="lang">주사위 클래스를 선택하세요. </label>
+  <select name="주사위 클래스" id="clas">
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+  </select>
+</form><br>
+만약 스택에(충전의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 :<input type="text" id="stack">
+<form action="#" >
+  <label for="lang">달주사위 존재/활성화 여부를 선택하세요</label>
+  <select name="달주사위" id="dal">
+    <option value="1">활성화 된 달주사위</option>
+    <option value="2">활성화 안 된 달주사위</option>
+    <option value="3">달주사위 없음</option>
+  </select>
+</form><br>
+<input type="button" value="계산하기" onclick="cal()">
+<input type="text" id="res">
+</body>
+</html>
