@@ -13,8 +13,14 @@ function cal()
 	var dal=document.getElementById("dal").value;
 	var stack=document.getElementById("stack").value;
 	var lev=Number(document.getElementById("lev").value);
+	var lcs=Number(document.getElementById("lcs").value);
+	var leye=Number(document.getElementById("leye").value);
 	var dam;
 	var res;
+	var atspd=(lcs+8)*leye;
+	if(atspd>95){
+		atspd=95;
+	}
 	lev-=1
 	crit/=100;
 	if(dal==1){
@@ -42,7 +48,12 @@ function cal()
 		if(dill=="combo"){
 			dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
 		}
-		dam=1.7*20*(0.65*dam+0.65*dam*crit*0.35);
+		if(atspd*1.03<=95){
+			dam=((0.65*dam+0.65*dam*crit*0.35)+(0.65*dam+0.65*dam*crit*0.35)*leye*0.1)/(1-atspd*1.03);
+		}
+		if(atspd*1.03>95){
+			dam=((0.65*dam+0.65*dam*crit*0.35)+(0.65*dam+0.65*dam*crit*0.35)*leye*0.1)/0.05;
+		}
 	}
 	if(dal==2){
 		if(dill=="sav"){
@@ -69,7 +80,7 @@ function cal()
 		if(dill=="combo"){
 			dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
 		}
-        dam=20*(0.95*dam+dam*crit*0.05);
+        	dam=(0.95*dam+dam*crit*0.05)/(1-atspd);
 	}
 	if(dal==3){
 		if(dill=="sav"){
@@ -152,6 +163,32 @@ function cal()
     <option value="2">활성화 안 된 달주사위</option>
     <option value="3">달주사위 없음</option>
   </select>
+</form><br>
+<form action="#" >
+  <label for="lang">달주사위 클래스를 선택하세요/label>
+  <select name="달주사위" id="lcs" style="font-size: 1em;">
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    </select>
+</form><br>
+<form action="#" >
+  <label for="lang">달주사위 눈금을 선택하세요</label>
+  <select name="달주사위" id="leye" style="font-size: 1em;">
+    <option value="71">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    </select>
 </form><br>
 <input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;"><br><br>
 결과 : <input type="text" id="res" style="font-size: 1em;">
