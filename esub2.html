@@ -48,7 +48,12 @@ function cal()
 		if(dill=="combo"){
 			dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
 		}
-		dam=((0.65*dam+0.65*dam*crit*0.35)+(0.65*dam+0.65*dam*crit*0.35)*leye*0.1)/(1-atspd*1.03);
+		if(atspd*1.03<=95){
+			dam=((0.65*dam+0.65*dam*crit*0.35)+(0.65*dam+0.65*dam*crit*0.35)*leye*0.1)/(1-atspd*1.03);
+		}
+		if(atspd*1.03>95){
+			dam=((0.65*dam+0.65*dam*crit*0.35)+(0.65*dam+0.65*dam*crit*0.35)*leye*0.1)/0.05;
+		}
 	}
 	if(dal==2){
 		if(dill=="sav"){
