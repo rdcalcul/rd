@@ -122,14 +122,19 @@ function cal()
 	if(dam>=1000000000000){
 		jo=Math.floor(dam/1000000000000);
 		dam-=jo;
+		jo=String(jo);
 	if(dam>=100000000 and dam<999999999999){
 		uk=Math.floor(dam/100000000);
 		dam-=uk;
+		uk=String(uk);
 	}
 	if(dam>=10000 and dam<=99999999){
 		man=Math.floor(dam/10000);
 		dam-=man;
-	res=jo+"조"+uk+"억"+man+"만"+dam
+		man=String(man);
+	}
+	dam=String(dam);
+	res=jo+"조"+uk+"억"+man+"만"+dam;
 	document.getElementById("res").value = res;
 }
 </script>
