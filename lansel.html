@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Randomdice calculator</title>
+<script>
+function cal() {
+  var langu=document.getElementById("langu").vbalue;
+  if(langu=="k"){
+    location.href='main.html';
+  }
+  if(langu=="e"){
+    location.href='main2.html';
+  }
+  if(langu=="c"){
+    location.href='main3.html';
+  }
+  if(langu=="j"){
+    location.href='main4.html';
+  }
+}
+</script>
+</head>
+<body>
+<br>
+<br>
+<br>
+<form action="#" >
+  <label for="lang" style="font-size: 1em;">Select your language</label>
+  <select name="언어" id="langu" style="font-size: 1em;">
+	<option value="void">select a language</option>
+    <option value="k">Korean</option>
+    <option value="e">English</option>
+    <option value="c">Chinese</option>
+    <option value="j">Japenese</option>
+  </select>
+</form><br>
+<input type="button" value="summit" onclick="cal()" style="font-size: 1em;"><br><br>
+</>body>
