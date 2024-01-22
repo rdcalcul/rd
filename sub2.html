@@ -12,12 +12,14 @@ function cal()
 	var clas =Number(document.getElementById("clas").value);
 	var dal=document.getElementById("dal").value;
 	var stack=document.getElementById("stack").value;
+	var lev=Number(document.getElementById("lev:).value);
 	var dam;
 	var res;
+	lev-=1
 	crit/=100;
 	if(dal==1){
 		if(dill=="sav"){
-			dam = 180+clas*10;
+			dam = 100+20*lev+clas*10;
 			while(stack>0){
 				dam=dam*(50+0.5*clas)/100+dam;
 				stack-=1;
@@ -35,16 +37,16 @@ function cal()
 			dam=(300+30*clas+5*stack*(stack-1))/2;
 		}
 		if(dill=="sym"){
-			dam=(30+(60+20*clas)*(stack-1))*2;
+			dam=(30+(60+20*clas+20*lev)*(stack-1))*2;
 		}
 		if(dill=="combo"){
-			dam=(12+2*clas)*(stack-1)*stack/2+90+10*clas;
+			dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
 		}
 		dam=20*(0.65*dam+0.65*dam*crit*0.35);
 	}
 	if(dal==2){
 		if(dill=="sav"){
-			dam = 180+clas*10;
+			dam = 100+20*lev+clas*10;
 			while(stack>0){
 				dam=dam*(50+0.5*clas)/100+dam;
 				stack-=1;
@@ -62,16 +64,16 @@ function cal()
 			dam=(300+30*clas+5*stack*(stack-1))/2;
 			}
 		if(dill=="sym"){
-			dam=(30+(60+20*clas)*(stack-1))*2;
+			dam=(30+(60+20*clas+20*lev)*(stack-1))*2;
 		}
 		if(dill=="combo"){
-			dam=(12+2*clas)*(stack-1)*stack/2+90+10*clas;
+			dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
 		}
         dam=20*(0.95*dam+dam*crit*0.05);
 	}
 	if(dal==3){
 		if(dill=="sav"){
-			dam = 180+clas*10;
+			dam = 100+clas*10;
 			while(stack>0){
 				dam=dam*(50+0.5*clas)/100+dam;
 				stack-=1;
@@ -89,10 +91,10 @@ function cal()
 			dam=(300+30*clas+5*stack*(stack-1))/2;
 			}
 		if(dill=="sym"){
-			dam=(30+(60+20*clas)*(stack-1))*2;
+			dam=(30+(60+20*lev+20*clas)*(stack-1))*2;
 		}
 		if(dill=="combo"){
-			dam=(12+2*clas)*(stack-1)*stack/2+90+10*clas;
+			dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
 		}
 		dam=0.95*dam+0.65*dam*crit*0.05;
 	}
@@ -132,7 +134,17 @@ function cal()
 	<option value="15">15</option>
   </select>
 </form><br>
-만약 스택에(충전의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 : <input type="text" id="stack" style="font-size: 1em;"><br><br>
+<form action="#" >
+  <label for="lang">주사위 파워업 상태를 선택하세요(충전 과열 제외)</label>
+  <select name="파워업" id="lev" style="font-size: 1em;">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</form><br>
+만약 스택에(충전/과열의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 : <input type="text" id="stack" style="font-size: 1em;"><br><br>
 <form action="#" >
   <label for="lang">달주사위 존재/활성화 여부를 선택하세요</label>
   <select name="달주사위" id="dal" style="font-size: 1em;">
