@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Number of draws calculator</title>
+<script>
+function cal() {
+    var v1 = Number(document.getElementById("v1").value);
+    var v2 = Number(document.getElementById("v2").value);
+    var res = 0;
+    while((v1-v2)<=0){
+        v2=v2-v1;
+        v1=v1+10;
+        res=res+1;
+	}
+    document.getElementById("res").value = res;
+}
+</script>
+<font size=5>
+</head>
+<body>
+<img src="img2.PNG"width="50" height="50"><font size=7>Number of draws calculator!</font><br><br>
+<div>Here is Number of draws calculator. </br>Please write your needs of sp, having sp. and click "summit" button. </div><font size=3><br><br></font>
+Need of sp : 
+<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
+Your having sp : 
+<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
+Number of draws : 
+<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
+<br><br>
+<input type="button" value="summit" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
+</body>
+</html>
