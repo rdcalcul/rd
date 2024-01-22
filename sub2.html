@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>딜량 계산기</title>
+<font size=5>
 <script>
 function cal()
 {
@@ -18,7 +19,7 @@ function cal()
 		if(dill=="sav"){
 			dam = 180+clas*10;
 			while(stack>0){
-				dam=dam*(50+0.5*clas)+dam;
+				dam=dam*(50+0.5*clas)/100+dam;
 				stack-=1;
 			}
 		}
