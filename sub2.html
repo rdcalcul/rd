@@ -11,7 +11,7 @@ function cal()
 	var dill =document.getElementById("dill").value;
 	var clas =Number(document.getElementById("clas").value);
 	var dal=document.getElementById("dal").value;
-	var stack=document.getElementById("stack").value;
+	var stack=Number(document.getElementById("stack").value);
 	var lev=Number(document.getElementById("lev").value);
 	var lcs=Number(document.getElementById("lcs").value);
 	var leye=Number(document.getElementById("leye").value);
@@ -38,8 +38,8 @@ function cal()
 				stack-=1;
 				crit=crit+crit*(0.4+0.01*clas);
 			}
-			dam=dam*(1/1.7)
-			crit=crit=*(1/1.7)
+			dam=dam*(1/1.7);
+			crit=crit*(1/1.7);
 		}
 		if(dill=="rech"){
 			dam=(300+30*clas+5*stack*(stack-1))/1.5;
@@ -72,8 +72,8 @@ function cal()
 				stack-=1;
 				crit=crit+crit*(0.4+0.01*clas);
 			}
-			dam=dam*(1/1.7)
-			crit=crit=*(1/1.7)
+			dam=dam*(1/1.7);
+			crit=crit*(1/1.7);
 		}
 		if(dill=="rech"){
 			dam=(300+30*clas+5*stack*(stack-1))/1.5;
@@ -101,8 +101,8 @@ function cal()
 				stack-=1;
 				crit=crit+crit*(0.4+0.01*clas);
 			}
-			dam=dam*(1/1.7)
-			crit=crit=*(1/1.7)
+			dam=dam*(1/1.7);
+			crit=crit*(1/1.7);
 		}
 		if(dill=="rech"){
 			dam=(300+30*clas+5*stack*(stack-1))/1.5;
