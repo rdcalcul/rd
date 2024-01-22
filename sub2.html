@@ -103,7 +103,7 @@ function cal()
 </head>
 <body>
 <div>딜량 계산기입니다. 아래의 과정을 틀리지 않게 진행해주세요. 달주사위가 없을 경우에도 크리티컬을 고려한 평균값이 나옵니다.</div><br><br>
-크리티컬을 입력해 주세요 : <input type="text" id="crit">
+크리티컬을 입력해 주세요 : <input type="text" id="crit" style="font-size: 1em;">
 <form action="#" >
   <label for="lang">딜주사위를 선택하세요</label>
   <select name="딜주사위" id="dill" style="font-size: 1em;">
@@ -131,7 +131,7 @@ function cal()
 	<option value="15">15</option>
   </select>
 </form><br>
-만약 스택에(충전의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 :<input type="text" id="stack">
+만약 스택에(충전의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 :<input type="text" id="stack" style="font-size: 1em;">
 <form action="#" >
   <label for="lang">달주사위 존재/활성화 여부를 선택하세요</label>
   <select name="달주사위" id="dal" style="font-size: 1em;">
@@ -140,7 +140,7 @@ function cal()
     <option value="3">달주사위 없음</option>
   </select>
 </form><br>
-<input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;">
-<input type="text" id="res" style="font-size: 1em;">
+<input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;"><br>
+결과 : <input type="text" id="res" style="font-size: 1em;">
 </body>
 </html>
