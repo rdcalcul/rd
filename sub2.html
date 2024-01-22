@@ -5,6 +5,28 @@
 <title>딜량 계산기</title>
 <font size=5>
 <script>
+function numberToKorean(number) {
+    var inputNumber = number < 0 ? false : number;
+    var unitWords = ["", "만", "억", "조", "경"];
+    var splitUnit = 10000;
+    var splitCount = unitWords.length;
+    var resultArray = [];
+    var resultString = "";
+
+    for (var i = 0; i < splitCount; i++) {
+      var unitResult =
+        (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+      unitResult = Math.floor(unitResult);
+      if (unitResult > 0) {
+        resultArray[i] = unitResult;
+      }
+    }
+    for (var i = 0; i < resultArray.length; i++) {
+      if (!resultArray[i]) continue;
+      resultString = String(resultArray[i]) + unitWords[i] + resultString;
+    }
+    return resultString;
+  }
 function cal()
 {
 	var crit=Number(document.getElementById("crit").value);
@@ -119,22 +141,7 @@ function cal()
 		dam=0.95*dam+0.65*dam*crit*0.05;
 	}
 	dam=Math.floor(dam);
-	if(dam>=1000000000000){
-		jo=Math.floor(dam/1000000000000);
-		dam-=jo;
-		jo=String(jo);
-	if(dam>=100000000 and dam<999999999999){
-		uk=Math.floor(dam/100000000);
-		dam-=uk;
-		uk=String(uk);
-	}
-	if(dam>=10000 and dam<=99999999){
-		man=Math.floor(dam/10000);
-		dam-=man;
-		man=String(man);
-	}
-	dam=String(dam);
-	document.getElementById("res").value = (jo+"조"+uk+"억"+man+"만"+dam);
+	document.getElementById("res").value = numberToKorean(dam);
 }
 </script>
 </head>
