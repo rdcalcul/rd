@@ -106,7 +106,7 @@ function cal()
 크리티컬을 입력해 주세요 : <input type="text" id="crit">
 <form action="#" >
   <label for="lang">딜주사위를 선택하세요</label>
-  <select name="딜주사위" id="dill">
+  <select name="딜주사위" id="dill" style="font-size: 1em;">
 	<option value="void">선택하세요</option>
     <option value="sol">태양(준비중</option>
     <option value="sav">수호자</option>
@@ -119,7 +119,7 @@ function cal()
 </form><br>
 <form action="#" >
   <label for="lang">주사위 클래스를 선택하세요. </label>
-  <select name="주사위 클래스" id="clas">
+  <select name="주사위 클래스" id="clas" style="font-size: 1em;">
     <option value="7">7</option>
     <option value="8">8</option>
     <option value="9">9</option>
@@ -134,13 +134,13 @@ function cal()
 만약 스택에(충전의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 :<input type="text" id="stack">
 <form action="#" >
   <label for="lang">달주사위 존재/활성화 여부를 선택하세요</label>
-  <select name="달주사위" id="dal">
+  <select name="달주사위" id="dal" style="font-size: 1em;">
     <option value="1">활성화 된 달주사위</option>
     <option value="2">활성화 안 된 달주사위</option>
     <option value="3">달주사위 없음</option>
   </select>
 </form><br>
-<input type="button" value="계산하기" onclick="cal()">
-<input type="text" id="res">
+<input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;">
+<input type="text" id="res" style="font-size: 1em;">
 </body>
 </html>
