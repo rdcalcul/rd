@@ -59,7 +59,7 @@
 		dam=(30+(60+20*clas+20*lev)*(stack-1));
 	}
 	if(dill=="combo"){
-		dam=(8+lev+2*clas)*(stack-1)*stack/2+90+10*clas;
+		dam=(8+lev+2*clas)*stack+50+10*clas+10*lev;
 	}
   cridam=dam*crit/100;
   dam=Math.floor(dam);
