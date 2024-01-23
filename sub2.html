@@ -40,6 +40,7 @@ function cal()
 	var deye=Number(document.getElementById("deye").value);
 	var dam;
 	var res;
+	clas-=7
 	var atspd=Math.floor(lcs*leye+8);
 	if(atspd>95){
 		atspd=95;
@@ -65,7 +66,7 @@ function cal()
 			crit=crit*(1/1.7);
 		}
 		if(dill=="rech"){
-			dam=(300+30*clas+5*stack*(stack-1))/1.5;
+			dam=(300-30*clas+5*stack*(stack-1))/1.5;
 		}
 		if(dill=="sym"){
 			dam=(30+(60+20*clas+20*lev)*(stack-1))*2;
