@@ -37,6 +37,7 @@ function cal()
 	var lev=Number(document.getElementById("lev").value);
 	var lcs=Number(document.getElementById("lcs").value);
 	var leye=Number(document.getElementById("leye").value);
+	var deye=Number(document.getElementById("deye").value);
 	var dam;
 	var res;
 	var atspd=Math.floor(lcs*leye+8);
@@ -137,7 +138,7 @@ function cal()
 		}
 		dam=0.95*dam+0.65*dam*crit*0.05;
 	}
-	dam=Math.floor(dam);
+	dam=Math.floor(deye*dam);
 	document.getElementById("res").value = numberToKorean(dam);
 }
 </script>
@@ -172,6 +173,18 @@ function cal()
 	<option value="14">14</option>
 	<option value="15">15</option>
   </select>
+</form><br>
+<form action="#" >
+  <label for="lang">딜주사위 눈금을 선택하세요</label>
+  <select name="딜눈금" id="deye" style="font-size: 1em;">
+    <option value="71">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    </select>
 </form><br>
 <form action="#" >
   <label for="lang">주사위 파워업 상태를 선택하세요(충전 과열 제외)</label>
