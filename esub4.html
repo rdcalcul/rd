@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Needs of sp Calculator</title>
+    <font size=5>
+    <script>
+      function cal(){
+        var v1=Number(document.getElementById("v1").value);
+        var v2=Number(document.getElementById("v2").value);
+        var res=0;
+        while(v2>0){
+          res+=v1;
+          v1+=10;
+          v2-=1;
+        }
+        document.getElementById("res").value=res;
+      }
+    </script>
+  </head>
+  <body>
+    <img src="img2.PNG"width="50" height="50"><font size=7>Needs of sp Calculator!</font><br><br>
+<div>Here is the calculator about the amount of sp you should have when you get dices out the amount you want. </br>Please write correctly Sp of needs and the amount you want to get it out. </div><font size=3><br><br></font>
+Sp of needs : 
+<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
+The amount you want to get it out : 
+<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
+Sp of the amount you need when you get dices out the amount you want : 
+<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
+<br><br>
+<input type="button" value="calculate" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
+  </body>
+</html>
