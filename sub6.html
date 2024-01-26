@@ -10,7 +10,7 @@
 
 <script>
 	
-function numberToKorean(number) {
+  function numberToKorean(number) {
     var inputNumber = number < 0 ? false : number;
     var unitWords = ["", "만", "억", "조", "경"];
     var splitUnit = 10000;
@@ -35,16 +35,15 @@ function numberToKorean(number) {
 
 function cal() {
 
-    var v1 = Number(document.getElementById("v1").value);
+  var v1 = Number(document.getElementById("v1").value);
+  var v2 = Number(document.getElementById("v2").value);
+  var v3 = Number(document.getElementById("v3").value);
+    
+  var res;
 
-    var v2 = Number(document.getElementById("v2").value);
+  res = Math.floor(10+((v1-7)×(15+5/8)+125)×v3×v3×v2);
 
-    var v3=Number(document.getElementById("v3").value);
-    var res = 0;
-
-    res=Math.floor(10+((v1-7)×(15+5/8)+125)×v3×v3×v2);
-
-    document.getElementById("res").value = numberToKorean(res);
+  document.getElementById("res").value = res;
 
 }
 
