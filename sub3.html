@@ -64,6 +64,7 @@
 	}
 	if(dill=="magum"){
 		dam=10+(125+clas*15.625)*stack*lev*lev;
+	}
   cridam=dam*crit/100;
   dam=Math.floor(dam);
   cridam=Math.floor(cridam);
@@ -104,15 +105,7 @@
 	<option value="15">15</option>
   </select>
 </form><br>
-<form action="#" >
-  <label for="lang">주사위 파워업 상태를 선택하세요(충전 과열 마검 제외)</label>
-  <select name="파워업" id="lev" style="font-size: 1em;">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
+주사위 파워업 상태를 입력하세요(충전 과열 제외) : <input type="text" id="lev" value="주사위 파워업 상태">
 </form><br>
 만약 스택에(충전/과열/마검의 경우 레벨) 따라 딜이 달라진다면 스택(충전 과열 마검의 경우 레벨)을 입력하세요 : <input type="text" id="stack" style="font-size: 1em;"><br><br>
 <form action="#" >
