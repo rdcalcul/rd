@@ -9,6 +9,29 @@
 <title>마검주사위 딜 계산기</title>
 
 <script>
+	
+function numberToKorean(number) {
+    var inputNumber = number < 0 ? false : number;
+    var unitWords = ["", "만", "억", "조", "경"];
+    var splitUnit = 10000;
+    var splitCount = unitWords.length;
+    var resultArray = [];
+    var resultString = "";
+
+    for (var i = 0; i < splitCount; i++) {
+      var unitResult =
+        (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+      unitResult = Math.floor(unitResult);
+      if (unitResult > 0) {
+        resultArray[i] = unitResult;
+      }
+    }
+    for (var i = 0; i < resultArray.length; i++) {
+      if (!resultArray[i]) continue;
+      resultString = String(resultArray[i]) + unitWords[i] + resultString;
+    }
+    return resultString;
+  }
 
 function cal() {
 
@@ -21,7 +44,7 @@ function cal() {
 
     res=10+((v1-7)×15.625+125)×v3×v3×v2;
 
-    document.getElementById("res").value = res;
+    document.getElementById("res").value = numberToKorean(res);
 
 }
 
