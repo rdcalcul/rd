@@ -62,6 +62,8 @@
 	if(dill=="combo"){
 		dam=(8+lev+2*clas)*stack*(stack+1)/2+50+10*clas+10*lev;
 	}
+	if(dill=="magum"){
+		dam=10+(125+clas*15.625)*stack*lev*lev;
   cridam=dam*crit/100;
   dam=Math.floor(dam);
   cridam=Math.floor(cridam);
@@ -84,6 +86,7 @@
     <option value="rech">충전</option>
     <option value="sym">영혼수집</option>
     <option value="combo">콤보</option>
+    <option value="magum">마검</option>
     <option value="ready">준비중....</option>
   </select>
 </form><br>
@@ -102,7 +105,7 @@
   </select>
 </form><br>
 <form action="#" >
-  <label for="lang">주사위 파워업 상태를 선택하세요(충전 과열 제외)</label>
+  <label for="lang">주사위 파워업 상태를 선택하세요(충전 과열 마검 제외)</label>
   <select name="파워업" id="lev" style="font-size: 1em;">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -111,7 +114,7 @@
     <option value="5">5</option>
   </select>
 </form><br>
-만약 스택에(충전/과열의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 : <input type="text" id="stack" style="font-size: 1em;"><br><br>
+만약 스택에(충전/과열/마검의 경우 레벨) 따라 딜이 달라진다면 스택(충전 과열 마검의 경우 레벨)을 입력하세요 : <input type="text" id="stack" style="font-size: 1em;"><br><br>
 <form action="#" >
 <input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;"><br><br>
 일반 데미지 : <input type="text" id="dam" style="font-size: 1em;">
