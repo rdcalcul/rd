@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>뽑스피 계산기</title>
+
+<script>
+
+function cal() {
+
+    var v1 = Number(document.getElementById("v1").value);
+
+    var v2 = Number(document.getElementById("v2").value);
+
+    var v3=Number(document.getElementById("v3").value);
+    var res = 0;
+
+    res=10+((v1-7)×15.625+125)×v3×v3×v2
+
+    document.getElementById("res").value = res;
+
+}
+
+</script>
+
+<font size=5>
+
+</head>
+
+<body>
+
+<img src="img2.PNG"width="50" height="50"><font size=7>마검주사위 딜 계산기!</font><br><br>
+
+<div>마검주사위 데미지를 계산하는 사이트입니다. </br>다음 입력란에 알맞데 기입한 후 계산하기 버튼을 눌러주세요. </div><font size=3><br><br></font>
+
+클래스 : 
+
+<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
+
+눈금수 : 
+
+<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
+
+파워업 상태 : 
+<input type="text" id="v3" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
+마검주사위 데미지 : 
+
+<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
+
+<br><br>
+
+
+
+<input type="button" value="계산하기" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
+
+</body>
+
+</html>
