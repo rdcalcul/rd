@@ -8,7 +8,7 @@
         /* 스타일은 생략 */
     </style>
     <script>
-        function cal() {
+               function cal() {
             // 입력값 가져오기
             var dal = Number(document.getElementById("dal").value);
             var dcl = Number(document.getElementById("dcl").value);
@@ -31,8 +31,8 @@
             }
 
             // 공격 횟수 계산
-            var atcount = (1 / 0.7) * hcr / (1 - atspd / 100)/ (100 / (3 + 0.3 * hcl + 0.1 * hpp))/100;
-            
+            var atcount = (1 / 0.7) * hcr / (1 - atspd / 100);
+
             // atspd가 100% 이상이면 최대치로 설정
             if (atspd >= 100) {
                 atspd = 100;
@@ -40,9 +40,8 @@
             }
 
             // 보스 체력 감소 계산
-            while (atcount >= 1) {
+            for (var i = 0; i < atcount; i++) {
                 boss = boss * (1 - 0.02 * 0.005 * hcl);
-                atcount -= 1;
             }
 
             // 결과 표시
