@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>랜다 계산기 사이트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .calculator-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 10px;
+    }
+    .calculator-buttons button {
+      height: 60px;
+      width: 150px;
+      font-size: 1.2em;
+    }
+    .updates {
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="image.png" width="60" height="60" alt="Random Dice">
+    <span style="font-size: 1.5em;">랜덤다이스 계산기!</span>
+  </div>
+  <div>
+    <p>랜덤다이스 계산기 사이트입니다. 다른 계산 기능은 추후 추가할 예정입니다.</p>
+    <p>기능 추가 문의/상담은 <a href="mailto:youtobewant@gmail.com">youtobewant@gmail.com</a>으로 보내주세요.</p>
+  </div>
+  <div class="calculator-buttons">
+    <button type="button" class="뽑스피 계산기" onClick="location.href='sub1.html'">뽑을 수 있는 횟수 계산기</button>
+    <button type="button" class="평균DPS 계산기" onClick="location.href='sub2.html'">평균 DPS 계산기</button>
+    <button type="button" class="한방 딜 계산기" onClick="location.href='sub3.html'">한방 딜 계산기</button>
+    <button type="button" class="필요 sp 계산기" onClick="location.href='sub4.html'">필요 sp 계산기</button>
+    <button type="button" class="크리티컬 계산기" onClick="location.href='sub5.html'">크리티컬 계산기</button>
+  </div>
+  <div class="updates">
+    최근 업데이트 내용: 한방 딜 계산기에 마검 주사위 추가
+  </div>
+</body>
+</html>
