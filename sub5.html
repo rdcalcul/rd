@@ -1,57 +1,99 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="ko">
 
 <head>
+  <meta charset="utf-8">
+  <title>크리티컬 계산기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f2f2f2;
+    }
 
-<meta charset="utf-8">
+    .header {
+      text-align: center;
+      font-size: 2em;
+    }
 
-<title>크리티컬 계산기</title>
+    .calculator-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
 
-<script>
+    .calculator-input {
+      margin-bottom: 15px;
+    }
 
-function cal() {
+    input[type="text"],
+    input[type="button"] {
+      height: 40px;
+      font-size: 1.2em;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-    var v1 = Number(document.getElementById("v1").value);
+    input[type="button"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-    var v2 = Number(document.getElementById("v2").value);
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
 
-    var res = 0;
+    .result {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function cal() {
+      var v1 = Number(document.getElementById("v1").value);
+      var v2 = Number(document.getElementById("v2").value);
+      var res = 0;
 
-    res=v2/v1*100;
-    
-    document.getElementById("res").value = Math.floor(res);
+      if (v1 !== 0) {
+        res = (v2 / v1) * 100;
+      }
 
-}
-
-</script>
-
-<font size=5>
-
+      document.getElementById("res").value = Math.floor(res);
+    }
+  </script>
 </head>
 
 <body>
-
-<img src="img4.jpg" height="50"><font size=7>크리티컬 계산기!</font><br><br>
-
-<div>상대방의 크리티컬 근사치를 계산하는 사이트입니다. </br>상대방의 크리티컬 데미지와 일반 데미지를 칸에 알맞게 기입한 후 계산하기 버튼을 눌러주세요. </div><font size=3><br><br></font>
-
-일반 데미지 : 
-
-<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
-
-크리티컬 데미지 : 
-
-<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
-
-상대 크리티컬 : 
-
-<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
-
-<br><br>
-
-<input type="button" value="계산하기" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
-
+  <div class="header">
+    <img src="img4.jpg" height="50" alt="크리티컬 계산기">
+    <font size=7>크리티컬 계산기!</font>
+  </div>
+  <div class="calculator-container">
+    <div class="calculator-input">
+      일반 데미지:
+      <input type="text" id="v1" style="font-size: 1.2em;">
+    </div>
+    <div class="calculator-input">
+      크리티컬 데미지:
+      <input type="text" id="v2" style="font-size: 1.2em;">
+    </div>
+    <div class="result">
+      상대 크리티컬:
+      <input type="text" id="res" style="font-size: 1.2em;">
+    </div>
+    <div class="calculator-input">
+      <input type="button" value="계산하기" onclick="cal()" style="font-size: 1.1em;">
+    </div>
+  </div>
 </body>
 
 </html>
