@@ -123,7 +123,7 @@
           atspd=95;
         }
         var hcount=Math.floor(100/(3+0.1*hcl));
-        var atcount=(1/0.7)*hcr/(1-atspd);
+        var atcount=(1/0.7)*hcr/(1-atspd/100);
         while(atcount>1){
           if(hcount==0){
             hcount=Math.floor(100/(3+0.1*hcl));
