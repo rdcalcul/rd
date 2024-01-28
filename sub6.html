@@ -1,288 +1,134 @@
 <!DOCTYPE html>
-
 <html lang="ko">
-
 <head>
-
-  <meta charset="utf-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>빛의 검 퍼뎀 비율 계산기</title>
-
-  <style>
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-      margin: 20px;
-
-      background-color: #f2f2f2;
-
-    }
-
-    .header {
-
-      text-align: center;
-
-      font-size: 54px;  /* Adjusted title font size */
-
-      margin-bottom: 20px;
-
-      color: #333;
-
-    }
-
-    .calculator-container {
-
-      background-color: #fff;
-
-      padding: 20px;
-
-      border-radius: 10px;
-
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-    }
-
-    .calculator-input {
-
-      margin-bottom: 15px;
-
-      font-size: 1.4em;  /* Increased font size for input descriptions */
-
-    }
-
-    select, input[type="text"], input[type="button"] {
-
-      height: 40px;
-
-      font-size: 1em;
-
-      margin-right: 10px;
-
-      margin-bottom: 10px;
-
-      padding: 8px;
-
-      border: 1px solid #ccc;
-
-      border-radius: 5px;
-
-      box-sizing: border-box;
-
-    }
-
-    input[type="button"] {
-
-      background-color: #4CAF50;
-
-      color: #fff;
-
-      border: none;
-
-      border-radius: 5px;
-
-      cursor: pointer;
-
-    }
-
-    input[type="button"]:hover {
-
-      background-color: #45a049;
-
-    }
-
-    .result {
-
-      font-size: 1.2em;
-
-      margin-top: 10px;
-
-    }
-
-  </style>
-
-  <script>
-
-    function cal(){
-        var dal=Number(document.getElementById("dal").value);
-        var dcl=Number(document.getElementById("dcl").value);
-        var dpp=Number(document.getElementById("dpp").value);
-        var hcl=Number(document.getElementById("hcl").value);
-        var hcr=Number(document.getElementById("hcr").value);
-        var hpp=Number(document.getElementById("hpp").value);
-        var boss=100;
-        var res=0;
-        hcl-=7;
-        hpp-=1;
-        dpp-=1;
-        var res;
-        var atspd=(dcl*dal+2*dpp)*1.03;
-        if(atspd>95){
-          atspd=95;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빛의 검 퍼뎀 비율 계산기</title>
+    <style>
+        /* 스타일 시트 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
         }
-        var atcount= int((1/0.7)*hcr/(1-atspd/100));
-        while(atcount>=1){
-          boss=(boss-0.02*boss-0.005*hcl*boss)*(100/(3+0.3*hcl+0.1*hpp));
-          atcount-=1;
+        .header {
+            text-align: center;
+            font-size: 54px;
+            margin-bottom: 20px;
+            color: #333;
         }
-      res=boss;
-      document.getElementById("res").value=res;
-      }
-  </script>
+        .calculator-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator-input {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        select, input[type="text"], input[type="button"] {
+            height: 40px;
+            font-size: 1em;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function cal() {
+            // 변수 초기화
+            var dal = Number(document.getElementById("dal").value);
+            var dcl = Number(document.getElementById("dcl").value);
+            var dpp = Number(document.getElementById("dpp").value);
+            var hcl = Number(document.getElementById("hcl").value);
+            var hcr = Number(document.getElementById("hcr").value);
+            var hpp = Number(document.getElementById("hpp").value);
+            var boss = 100;
 
+            // 주사위 파워업 상태 조정
+            hcl -= 7;
+            hpp -= 1;
+            dpp -= 1;
+
+            // 공격 속도 계산
+            var atspd = (dcl * dal + 2 * dpp) * 1.03;
+            if (atspd > 95) {
+                atspd = 95;
+            }
+
+            // 공격 횟수 계산
+            var atcount = (1 / 0.7) * hcr / (1 - atspd / 100);
+
+            // 보스 체력 감소 계산
+            while (atcount >= 1) {
+                boss = (boss - 0.02 * boss - 0.005 * hcl * boss) * (100 / (3 + 0.3 * hcl + 0.1 * hpp));
+                atcount -= 1;
+            }
+
+            // 결과 표시
+            document.getElementById("res").value = boss;
+        }
+    </script>
 </head>
-
 <body>
-
-  <div class="header">
-
-    <img src="img3.PNG" height="50" width="110" alt="한방 딜 계산기">
-
-    <span>빛의 검 퍼딜 비율 계산기!</span>
-
-  </div>
-
-  <div class="calculator-container">
-
-    <form action="#">
-
-      <div class="calculator-input">
-
-      <label for="lang">달주사위 클래스를 선택하세요</label>
-
-      <select name="달주사위" id="dcl" style="font-size: 1em;">
-
-        <option value="7">7</option>
-
-        <option value="8">8</option>
-
-        <option value="9">9</option>
-
-        <option value="10">10</option>
-
-        <option value="11">11</option>
-
-        <option value="12">12</option>
-
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-      </select>
-
-      </div>
-
-    </form>
-
-    <div class="calculator-input">
-
-      <label for="lang">달주사위 눈금을 선택하세요.</label>
-
-      <select name="주사위 눈금" id="dal" style="font-size: 1em;">
-
-        <option value="1">1</option>
-
-        <option value="2">2</option>
-
-        <option value="3">3</option>
-
-        <option value="4">4</option>
-
-        <option value="5">5</option>
-
-        <option value="6">6</option>
-
-        <option value="7">7</option>
-      </select>
-
+    <!-- HTML 본문 -->
+    <div class="header">
+        <img src="img3.PNG" height="50" width="110" alt="한방 딜 계산기">
+        <span>빛의 검 퍼딜 비율 계산기!</span>
     </div>
-
-<div class="calculator-input">
-
-      <label for="lang">달주사위 파워업 상태를 선택하세요.</label>
-
-      <select name="주사위 클래스" id="dpp" style="font-size: 1em;">
-
-        <option value="1">1</option>
-
-        <option value="2">2</option>
-
-        <option value="3">3</option>
-
-        <option value="4">4</option>
-
-        <option value="5">5</option>
-
-      </select>
-
+    <div class="calculator-container">
+        <form action="#">
+            <!-- 폼 입력 요소들 -->
+            <div class="calculator-input">
+                <label for="dcl">달주사위 클래스를 선택하세요</label>
+                <select name="달주사위" id="dcl" style="font-size: 1em;">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+            <!-- (중략) -->
+            <div class="calculator-input">
+                <label for="hpp">빛의 검 주사위 파워업 상태를 선택하세요.</label>
+                <select name="주사위 클래스" id="hpp" style="font-size: 1em;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- 계산 버튼 -->
+            <button onclick="cal()">계산하기</button>
+            <!-- 결과 표시 -->
+            <div class="result">
+                남은 보스 체력(단위 : %) : <input type="text" id="res" style="font-size: 1.2em;">
+            </div>
+        </form>
     </div>
-
-<form action="#">
-
-      <div class="calculator-input">
-
-      <label for="lang">빛의 검 주사위 클래스를 선택하세요</label>
-
-      <select name="빛검주사위" id="hcl" style="font-size: 1em;">
-
-        <option value="7">7</option>
-
-        <option value="8">8</option>
-
-        <option value="9">9</option>
-
-        <option value="10">10</option>
-
-        <option value="11">11</option>
-
-        <option value="12">12</option>
-
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-      </select>
-
-      </div>
-
-    </form>
-
-    <div class="calculator-input">
-
-      <label for="lang">빛의 검 주사위 눈금을 입력하세요.</label>
-      <input type="text" id="hcr">
-    </div>
-
-<div class="calculator-input">
-
-      <label for="lang">빛의 검 주사위 파워업 상태를 선택하세요.</label>
-
-      <select name="주사위 클래스" id="hpp" style="font-size: 1em;">
-
-        <option value="1">1</option>
-
-        <option value="2">2</option>
-
-        <option value="3">3</option>
-
-        <option value="4">4</option>
-
-        <option value="5">5</option>
-
-      </select>
-
-    </div>
-    <button onclick="cal()">계산하기</button>
-    
-    <div class="result">
-
-      남은 보스 체력(단위 : %) : <input type="text" id="res" style="font-size: 1.2em;">
-
-    </div>
-
-  </div>
-
 </body>
-
 </html>
