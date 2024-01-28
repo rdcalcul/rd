@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>빛의 검 효율 계산기</title>
+    <script>
+      function cal(){
+        var dal=Number(document.getElementById(dal).value);
+        var dcl=Number(document.getElementById(dcl).value);
+        var dpp=Number(document.getElementById(dpp).value);
+        var hcl=Number(document.getElementById(hcl).value);
+        var hcr=Number(document.getElementById(hcr).value);
+        var hpp=Number(document.getElementById(hpp).value);
+        var boss=100;
+        hcl-=7;
+        hpp-=1;
+        dpp-=1;
+        var res;
+        var atspd=(dcl*dal+dpp)*1.03;
+        if(atspd>95){
+          atspd=95;
+        }
+        var hcount=Math.floor(100/(3+0.1*hcl));
+        var atcount=(1/0.7)*hcr/(1-atspd);
+        while(atcount>1){
+          if(hcount==0){
+            hcount=Math.floor(100/(3+0.1*hcl));
+            boss=boss*(1-0.02*0.005*hcl);
+          }
+          else{
+            hcount-=1;
+          }
+          atcount-=1;
+        }
+        if(atcount>0){
+          boss=boss*(1-0.02*0.005*hcl)*atcount;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>
