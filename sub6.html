@@ -118,7 +118,7 @@
         hpp-=1;
         dpp-=1;
         var res;
-        var atspd=(dcl*dal+dpp)*1.03;
+        var atspd=(dcl*dal+2*dpp)*1.03;
         if(atspd>95){
           atspd=95;
         }
@@ -133,9 +133,6 @@
             hcount-=1;
           }
           atcount-=1;
-        }
-        if(atcount>0){
-          boss=boss*(1-0.02-0.005*hcl)*atcount;
         }
         document.getElementById("res").value=boss;
       }
