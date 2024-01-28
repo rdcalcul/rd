@@ -1,33 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="utf-8">
-<title>뽑스피 계산기</title>
-<script>
-function cal() {
-    var v1 = Number(document.getElementById("v1").value);
-    var v2 = Number(document.getElementById("v2").value);
-    var res = 0;
-    while((v1-v2)<=0){
-        v2=v2-v1;
-        v1=v1+10;
-        res=res+1;
-	}
-    document.getElementById("res").value = res;
-}
-</script>
-<font size=5>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>뽑스피 계산기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f2f2f2;
+    }
+    .header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .calculator-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .calculator-input {
+      margin-bottom: 15px;
+    }
+    input[type="text"], input[type="button"] {
+      height: 40px;
+      font-size: 1em;
+      margin-right: 10px;
+    }
+    input[type="button"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+    .result {
+      font-size: 1em;
+    }
+  </style>
+  <script>
+    function cal() {
+        var v1 = Number(document.getElementById("v1").value);
+        var v2 = Number(document.getElementById("v2").value);
+        var res = 0;
+        while((v1-v2)<=0){
+            v2=v2-v1;
+            v1=v1+10;
+            res=res+1;
+        }
+        document.getElementById("res").value = res;
+    }
+  </script>
 </head>
 <body>
-<img src="img2.PNG"width="50" height="50"><font size=7>뽑을 수 있는 횟수 계산기!</font><br><br>
-<div>뽑을 수 있는 횟수를 계산하는 사이트입니다. </br>뽑스피와 보유 sp 칸에 알맞게 기입한 후 계산하기 버튼을 눌러주세요. </div><font size=3><br><br></font>
-뽑스피: 
-<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
-보유 sp: 
-<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
-뽑을 수 있는 횟수: 
-<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
-<br><br>
-<input type="button" value="계산하기" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
+  <div class="header">
+    <img src="img2.PNG" width="50" height="50" alt="뽑스피 계산기">
+    <span style="font-size: 1.5em; color: #333;">뽑을 수 있는 횟수 계산기!</span>
+  </div>
+  <div class="calculator-container">
+    <div class="calculator-input">
+      뽑스피: 
+      <input type="text" id="v1">
+    </div>
+    <div class="calculator-input">
+      보유 SP: 
+      <input type="text" id="v2">
+    </div>
+    <div class="calculator-input result">
+      뽑을 수 있는 횟수: 
+      <input type="text" id="res" readonly>
+    </div>
+    <input type="button" value="계산하기" onclick="cal()">
+  </div>
 </body>
 </html>
