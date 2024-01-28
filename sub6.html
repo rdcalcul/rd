@@ -31,7 +31,7 @@
             }
 
             // 공격 횟수 계산
-            var atcount = (1 / 0.7) * hcr / (1 - atspd / 100);
+            var atcount = (1 / 0.7) * hcr / (1 - atspd / 100)/ (100 / (3 + 0.3 * hcl + 0.1 * hpp))/100;
             
             // atspd가 100% 이상이면 최대치로 설정
             if (atspd >= 100) {
