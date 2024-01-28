@@ -122,12 +122,12 @@
         if(atspd>95){
           atspd=95;
         }
-        var hcount=Math.floor(100/(3+0.1*hcl));
+        var hcount=Math.floor(100/(3+0.3*hcl+0.1*hcr));
         var atcount=(1/0.7)*hcr/(1-atspd/100);
         while(atcount>1){
           if(hcount==0){
             hcount=Math.floor(100/(3+0.1*hcl));
-            boss=boss*(1-0.02-0.005*hcl);
+            boss=boss-0.02*boss-0.005*hcl*boss;
           }
           else{
             hcount-=1;
