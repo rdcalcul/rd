@@ -123,7 +123,7 @@
         if(atspd>95){
           atspd=95;
         }
-        var atcount= (1/0.7)*hcr/(1-atspd/100);
+        var atcount= int((1/0.7)*hcr/(1-atspd/100));
         while(atcount>=1){
           boss=(boss-0.02*boss-0.005*hcl*boss)*(100/(3+0.3*hcl+0.1*hpp));
           atcount-=1;
