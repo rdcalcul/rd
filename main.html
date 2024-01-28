@@ -8,16 +8,22 @@
     body {
       font-family: Arial, sans-serif;
       margin: 40px;
+      background-color: #f2f2f2;
     }
     .header {
       text-align: center;
       font-size: 36px;
       margin-bottom: 30px;
+      color: #333;
     }
     .calculator-container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     .calculator-buttons {
       display: flex;
@@ -28,28 +34,37 @@
     .calculator-buttons button {
       height: 80px;
       width: 200px;
-      font-size: 1.5em;
+      font-size: 1.7em;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .calculator-buttons button:hover {
+      background-color: #45a049;
     }
     .updates {
-      font-size: 18px;
+      font-size: 20px;
       margin-top: 40px;
       text-align: center;
+      color: #777;
     }
   </style>
 </head>
 <body>
   <div class="header">
     <img src="image.png" width="80" height="80" alt="Random Dice">
-    <span style="font-size: 2em;">랜덤다이스 계산기!</span>
+    <span style="font-size: 2em; color: #333;">랜덤다이스 계산기!</span>
   </div>
   <div class="calculator-container">
-    <p>랜덤다이스 계산기 사이트입니다. 다른 계산 기능은 추후 추가할 예정입니다.</p>
-    <p>기능 추가 문의/상담은 <a href="mailto:youtobewant@gmail.com">youtobewant@gmail.com</a>으로 보내주세요.</p>
+    <p style="font-size: 1.2em; color: #555;">랜덤다이스 계산기 사이트입니다. 다른 계산 기능은 추후 추가할 예정입니다.</p>
+    <p style="font-size: 1.2em; color: #555;">기능 추가 문의/상담은 <a href="mailto:youtobewant@gmail.com" style="color: #007BFF;">youtobewant@gmail.com</a>으로 보내주세요.</p>
     <div class="calculator-buttons">
       <button type="button" class="뽑스피 계산기" onClick="location.href='sub1.html'">뽑을 수 있는 횟수 계산기</button>
       <button type="button" class="평균DPS 계산기" onClick="location.href='sub2.html'">평균 DPS 계산기</button>
       <button type="button" class="한방 딜 계산기" onClick="location.href='sub3.html'">한방 딜 계산기</button>
-      <button type="button" class="필요 sp 계산기" onClick="location.href='sub4.html'">필요 sp 계산기</button>
+      <button type="button" class="필요 sp 계산기" onClick="location.href='sub4.html'">필요 SP 계산기</button>
       <button type="button" class="크리티컬 계산기" onClick="location.href='sub5.html'">크리티컬 계산기</button>
     </div>
   </div>
