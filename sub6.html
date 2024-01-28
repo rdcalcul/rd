@@ -125,8 +125,8 @@
         var atcount= Number((1/0.7)*hcr/(1-atspd/100));
         while(atcount>1){
           boss=(boss-0.02*boss-0.005*hcl*boss)*(100/(3+0.3*hcl+0.1*hpp));
-          }
           atcount-=1;
+        }
         document.getElementById("res").value=boss;
       }
   </script>
