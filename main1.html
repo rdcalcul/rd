@@ -1,16 +1,66 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>randomdice calculator site</title>
-<font size=5>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomdice Calculator Site</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        div.description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 5px;
+            background-color: #3498db;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<img src="image.png"width="60" height="60"><font size=7>Randomdice Calculator!</font><br><br><div>Here is Randomdice calculator. The function which is not here will be added in later. </br>Please send your inquiry to youtobewant@gmail.com</div><br>
-<button type="button" class="뽑스피 계산기" onClick="location.href='esub1.html'" height="60" width="150" style="font-size: 1.2em;">Calculator of the amount you can create your dice</button>
-              <button type="button" class="평균DPS 계산기" onClick="location.href='esub2.html'" height="60" width="150" style="font-size: 1.2em;">Calculator of Dps</button>
-              <button type="button" class="한방딜 계산기" onClick="location.href='esub3.html'" height="60" width="150" style="font-size: 1.2em;">One Shot Damage Calculator(Now retranslating so don't use)</button>
- <br><br>
-  <button type="button" class="필요sp계산기" onClick="location.href='esub4.html'" height="60" width="150" style="font-size: 1.2em;">Needs of Sp Calculator</button>
 
+    <header>
+        <img src="image.png" alt="Dice Icon" width="60" height="60">
+        <h1>Randomdice Calculator!</h1>
+        <div class="description">
+            Here is Randomdice calculator. The function which is not here will be added in later.<br>
+            Please send your inquiry to youtobewant@gmail.com
+        </div>
+    </header>
+
+    <section>
+        <button class="calculator-btn" onclick="location.href='esub1.html'">Calculator of the amount you can create your dice</button>
+        <button class="calculator-btn" onclick="location.href='esub2.html'">Calculator of Dps</button>
+        <button class="calculator-btn" onclick="location.href='esub3.html'">One Shot Damage Calculator (Now retranslating so don't use)</button>
+        <br><br>
+        <button class="calculator-btn" onclick="location.href='esub4.html'">Needs of Sp Calculator</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Randomdice Calculator Site. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
