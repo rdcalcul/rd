@@ -1,98 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>One Shot Damage Calculator</title>
-	<font size=5>
-  <script>
-  function cal()
-{
-	var crit=Number(document.getElementById("crit").value);
-	var dill =document.getElementById("dill").value;
-	var clas =Number(document.getElementById("clas").value);
-	var stack=Number(document.getElementById("stack").value);
-	var lev=Number(document.getElementById("lev").value);
-	var dam;
-  	var cridam;
-	var res;
-	lev-=1;
-	clas-=7;
-	if(dill=="sav"){
-		dam = 100+20*lev+clas*10;
-		while(stack>0){
-			dam=dam*(50+0.5*clas)/100+dam;
-			stack-=1;
-		}
-	}
-	if(dill=="ovl"){
-		dam=400;
-		while(stack>0){
-			dam=dam+dam*(0.3+0.01*clas);
-			stack-=1;
-			crit=crit+crit*(0.4+0.01*clas);
-		}
-	}
-	if(dill=="rech"){
-		dam=(300+30*clas-5*stack+5*stack*stack);
-	}
-	if(dill=="sym"){
-		dam=(30+(60+20*clas+20*lev)*(stack-1));
-	}
-	if(dill=="combo"){
-		dam=(8+lev+2*clas)*stack*(stack+1)/2+50+10*clas+10*lev;
-	}
-  cridam=dam*crit/100;
-  dam=Math.floor(dam);
-  cridam=Math.floor(cridam);
-  document.getElementById("dam").value=dam;
-  document.getElementById("cridam").value=cridam;
-}
- </script>
+    <meta charset="utf-8">
+    <title>One Shot Damage Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 20px;
+            font-size: 2em;
+        }
+
+        div.instructions {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        label,
+        select,
+        input[type="text"],
+        input[type="button"] {
+            font-size: 1em;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        select {
+            width: 150px;
+        }
+
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function cal() {
+            var crit = Number(document.getElementById("crit").value);
+            var dill = document.getElementById("dill").value;
+            var clas = Number(document.getElementById("clas").value);
+            var stack = Number(document.getElementById("stack").value);
+            var lev = Number(document.getElementById("lev").value);
+            var dam;
+            var cridam;
+            var res;
+            lev -= 1;
+            clas -= 7;
+            if (dill == "sav") {
+                dam = 100 + 20 * lev + clas * 10;
+                while (stack > 0) {
+                    dam = dam * (50 + 0.5 * clas) / 100 + dam;
+                    stack -= 1;
+                }
+            }
+            if (dill == "ovl") {
+                dam = 400;
+                while (stack > 0) {
+                    dam = dam + dam * (0.3 + 0.01 * clas);
+                    stack -= 1;
+                    crit = crit + crit * (0.4 + 0.01 * clas);
+                }
+            }
+            if (dill == "rech") {
+                dam = (300 + 30 * clas - 5 * stack + 5 * stack * stack);
+            }
+            if (dill == "sym") {
+                dam = (30 + (60 + 20 * clas + 20 * lev) * (stack - 1));
+            }
+            if (dill == "combo") {
+                dam = (8 + lev + 2 * clas) * stack * (stack + 1) / 2 + 50 + 10 * clas + 10 * lev;
+            }
+            cridam = dam * crit / 100;
+            dam = Math.floor(dam);
+            cridam = Math.floor(cridam);
+            document.getElementById("dam").value = dam;
+            document.getElementById("cridam").value = cridam;
+        }
+    </script>
 </head>
+
 <body>
-  <img src="img3.PNG" height="50" width="110"><font size=7>One Shot Damage Calculator!</font><br><br>
-<div>Here is One Shot Calculator. Please follow the bellow process correctly. </div><br><br>
-write your critical damage : <input type="text" id="crit" style="font-size: 1em;"><br><br>
-<form action="#" >
-  <label for="lang">Select the damaging dice</label>
-  <select name="딜주사위" id="dill" style="font-size: 1em;">
-	<option value="void">Sekect</option>
-    <option value="sol">Solar(Not ready)</option>
-    <option value="sav">Guardian</option>
-    <option value="ovl">Overheat</option>
-    <option value="rech">Recharge</option>
-    <option value="sym">Soul</option>
-    <option value="combo">Combo</option>
-    <option value="ready">Not ready....</option>
-  </select>
-</form><br>
-<form action="#" >
-  <label for="lang">Select your dice's class. </label>
-  <select name="주사위 클래스" id="clas" style="font-size: 1em;">
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-	<option value="14">14</option>
-	<option value="15">15</option>
-  </select>
-</form><br>
-<form action="#" >
-  <label for="lang">Select you dice's situation of power up(not recharge, overheat). </label>
-  <select name="파워업" id="lev" style="font-size: 1em;">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-</form><br>
-If the damage is changed by some stacks, Please write your stacks(In recharge, overheat case is level) : <input type="text" id="stack" style="font-size: 1em;"><br><br>
-<form action="#" >
-<input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;"><br><br>
-Normal damage : <input type="text" id="dam" style="font-size: 1em;">
-Critical damage: <input type="text" id="cridam" style="font-size: 1em;">
+    <header>
+        <img src="img3.PNG" height="50" width="110" alt="One Shot Damage Calculator">
+        <font size=7>One Shot Damage Calculator!</font>
+    </header>
+    <div class="instructions">
+        Here is the One Shot Calculator. Please follow the below process correctly.
+    </div>
+    <br><br>
+    <label for="crit">Write your critical damage:</label>
+    <input type="text" id="crit"><br><br>
+
+    <label for="dill">Select the damaging dice:</label>
+    <select name="딜주사위" id="dill">
+        <option value="void">Select</option>
+        <option value="sol">Solar(Not ready)</option>
+        <option value="sav">Guardian</option>
+        <option value="ovl">Overheat</option>
+        <option value="rech">Recharge</option>
+        <option value="sym">Soul</option>
+        <option value="combo">Combo</option>
+        <option value="ready">Not ready....</option>
+    </select><br><br>
+
+    <label for="clas">Select your dice's class:</label>
+    <select name="주사위 클래스" id="clas">
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+    </select><br><br>
+
+    <label for="lev">Select your dice's situation of power up(not recharge, overheat):</label>
+    <select name="파워업" id="lev">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br><br>
+
+    <label for="stack">If the damage is changed by some stacks, Please write your stacks (In recharge, overheat case is level):</label>
+    <input type="text" id="stack"><br><br>
+
+    <input type="button" value="Calculate" onclick="cal()"><br><br>
+
+    <label for="dam">Normal damage:</label>
+    <input type="text" id="dam"><br><br>
+
+    <label for="cridam">Critical damage:</label>
+    <input type="text" id="cridam">
 </body>
+
 </html>
