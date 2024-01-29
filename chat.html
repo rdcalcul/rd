@@ -38,18 +38,36 @@
     </div>
 
     <script>
+        var chatHistory = [];
+
         function sendMessage() {
             var userInput = document.getElementById("userInput").value;
             var chatContainer = document.getElementById("chat-container");
 
-            // 사용자가 입력한 메시지를 대화창에 추가
-            chatContainer.innerHTML += "<p><strong>사용자:</strong> " + userInput + "</p>";
+            // 사용자가 입력한 메시지를 배열에 추가
+            chatHistory.push({ user: "사용자", message: userInput });
 
-            // 대화창을 맨 아래로 스크롤
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+            // 전체 채팅 내용 갱신
+            updateChatDisplay();
 
             // 입력창 비우기
             document.getElementById("userInput").value = "";
+        }
+
+        function updateChatDisplay() {
+            var chatContainer = document.getElementById("chat-container");
+
+            // 채팅 내용 초기화
+            chatContainer.innerHTML = "";
+
+            // 배열에 있는 모든 메시지를 대화창에 추가
+            for (var i = 0; i < chatHistory.length; i++) {
+                var message = chatHistory[i];
+                chatContainer.innerHTML += "<p><strong>" + message.user + ":</strong> " + message.message + "</p>";
+            }
+
+            // 대화창을 맨 아래로 스크롤
+            chatContainer.scrollTop = chatContainer.scrollHeight;
         }
     </script>
 </body>
