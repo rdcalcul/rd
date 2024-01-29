@@ -1,40 +1,110 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Needs of sp Calculator</title>
-    <font size=5>
-    <script>
-      function cal(){
-        var v1=Number(document.getElementById("v1").value);
-        var v2=Number(document.getElementById("v2").value);
-        var res=0;
-        while(v2>0){
-          res+=v1;
-          v1+=10;
-          v2-=1;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Needs of SP Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
-        document.getElementById("res").value=res;
-      }
-    </script>
-  </head>
-  <body>
-    <img src="img2.PNG"width="50" height="50"><font size=7>Needs of sp Calculator!</font><p style=".top-left {
-  top: 10px;
-  right: 10px;
-}
 
-.bottom-right {
-  bottom: 10px;
-  right: 10px;
-}">translated by JUS_KITH</p><br><br>
-<div>Here is the calculator about the amount of sp you need to summon set amount of dices. </br>Please write correctly current summon cost and how much dices you want to summon. </div><font size=3><br><br></font>
-current summon cost : 
-<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
-how much dices you want to summon : 
-<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
-the amount of sp you need to summon set amount of dices : 
-<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
-<br><br>
-<input type="button" value="calculate" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
-  </body>
+        header {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 10px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        h1 {
+            font-size: 2em;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            margin: 0;
+            text-align: right;
+            color: #555;
+        }
+
+        div.instructions {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+        }
+
+        input {
+            font-size: 1em;
+            padding: 5px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px;
+            background-color: #3498db;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="img2.PNG" alt="Dice Icon">
+        <h1>Needs of SP Calculator!</h1>
+        <p>Translated by JUS_KITH</p>
+    </header>
+
+    <section>
+        <div class="instructions">
+            Here is the calculator about the amount of SP you need to summon a set amount of dices.<br>
+            Please write the current summon cost and how many dices you want to summon.
+        </div>
+        <br><br>
+        <label for="v1">Current Summon Cost:</label>
+        <input type="text" id="v1"><br><br>
+
+        <label for="v2">How Many Dices You Want to Summon:</label>
+        <input type="text" id="v2"><br><br>
+
+        <label for="res">The Amount of SP You Need:</label>
+        <input type="text" id="res"><br><br>
+
+        <button onclick="cal()">Calculate</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Needs of SP Calculator. All rights reserved.</p>
+    </footer>
+
+</body>
 </html>
