@@ -1,33 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>Number of draws calculator</title>
-<script>
-function cal() {
-    var v1 = Number(document.getElementById("v1").value);
-    var v2 = Number(document.getElementById("v2").value);
-    var res = 0;
-    while((v1-v2)<=0){
-        v2=v2-v1;
-        v1=v1+10;
-        res=res+1;
-	}
-    document.getElementById("res").value = res;
-}
-</script>
-<font size=5>
+    <meta charset="utf-8">
+    <title>Number of Draws Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 10px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        h1 {
+            font-size: 2em;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        div.instructions {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+        }
+
+        input {
+            font-size: 1em;
+            padding: 5px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px;
+            background-color: #3498db;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-<img src="img2.PNG"width="50" height="50"><font size=7>Number of draws calculator!</font><br><br>
-<div>Here is Number of draws calculator. </br>Please write your needs of sp, having sp. and click "summit" button. </div><font size=3><br><br></font>
-Need of sp : 
-<input type="text" id="v1" height="50" style="font-size: 1em;"><br><br> <!-- 값1 input 태그 추가 -->
-Your having sp : 
-<input type="text" id="v2" height="50" style="font-size: 1em;"><br><br> <!-- 값2 input 태그 추가 -->
-Number of draws : 
-<input type="text" id="res" height="50" style="font-size: 1em;"> <!-- 결과 input 태그 추가 -->
-<br><br>
-<input type="button" value="summit" onclick="cal()" style="font-size: 1.1em;"> <!-- 계산하기 버튼 추가 -->
+
+    <header>
+        <img src="img2.PNG" alt="SP Icon">
+        <h1>Number of Draws Calculator!</h1>
+    </header>
+
+    <section>
+        <div class="instructions">
+            Here is the Number of Draws calculator. <br>
+            Please write your needs of SP, having SP, and click the "Submit" button.
+        </div>
+        <br><br>
+        <label for="v1">Need of SP:</label>
+        <input type="text" id="v1"><br><br>
+
+        <label for="v2">Your having SP:</label>
+        <input type="text" id="v2"><br><br>
+
+        <label for="res">Number of Draws:</label>
+        <input type="text" id="res"><br><br>
+
+        <button onclick="cal()">Submit</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Number of Draws Calculator. All rights reserved.</p>
+    </footer>
+
 </body>
+
 </html>
