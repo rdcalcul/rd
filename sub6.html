@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function cal(){
+        var atspd=0.45*0.05;
+        var bnun=Number(document.getElementById("bnun").value);
+        var crit=Number(document.getElementById("crit").value);
+        var lev=Number(document.getElementById("lev").value);
+        var clas=Number(document.getElementById("clas").value);
+        var stack=Number(document.getElementById("stack").value);
+        var dam;
+        var res;
+        lev += 1;
+        dam = 10 + (125 + clas * 15.625) * stack * lev * lev;
+        res=(dam*0.95+dam*0.05*crit)*atspd*bnun;
+        document.getElementById("res").value=res;
+    </script>
+    <title>급하게 만든 사이트</title>
+  </head>
+  <body>
+    크리티컬 입력 : <input type="text" id="crit">
+    마검 클래스 입력 : <input type="text" id="clas">
+    마검 눈금 입력 : <input type="text" id="stack">
+    마검 레벨 입력 : <input type="text" id="lev">
+    바람 눈금 입력 : <input type="text" id="bnun">
+    결과 : <input type="text" id="res">
+  </body>
+</html>
