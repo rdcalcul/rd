@@ -89,7 +89,7 @@
       if (dill == "sav") {
         dam = 100 + 20 * lev + clas * 10;
         while (stack > 0) {
-          dam = dam * (50 + 0.5 * clas) / 100 + dam;
+          dam = dam * (125 + clas) / 100 + dam;
           stack -= 1;
         }
       }
