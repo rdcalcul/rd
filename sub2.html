@@ -152,8 +152,9 @@
           dam = (30 + (60 + 20 * clas + 20 * lev) * (stack - 1)) * 2;
         }
         if (dill == "combo") {
-          dam = (0.95 * dam + dam * crit * 0.05) / (1 - atspd / 100);
+          dam = ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;
         }
+        dam = (0.95 * dam + dam * crit * 0.05) / (1 - atspd / 100);
       }
       if (dal == 3) {
         if (dill == "sav") {
@@ -180,7 +181,7 @@
           dam = (30 + (60 + 20 * lev + 20 * clas) * (stack - 1)) * 2;
         }
         if (dill == "combo") {
-          dam = 0.95 * dam + 0.65 * dam * crit * 0.05;
+        ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;  
         }
       }
       dam = Math.floor(deye * dam);
