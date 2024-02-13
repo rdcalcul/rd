@@ -91,6 +91,7 @@
       var res;
       clas -= 7;
       lev -= 1;
+      bpw-=1;
       var atspd = Math.floor(lcs * leye + 8);
       if (atspd > 95) {
         atspd = 95;
@@ -124,7 +125,7 @@
         if (dill == "combo") {
           dam = ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;
         }
-        if(b==0){
+        if (b==0){
           if (atspd * 1.03 > 95) {
             dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / 0.05;
           } 
@@ -132,8 +133,7 @@
             dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
           }
         }
-        else
-        {
+        if (b==1) {
           if (atspd * 1.03 > 95) {
             dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
           } 
@@ -173,7 +173,7 @@
           dam = (0.95 * dam + dam * crit * 0.05) / (1 - atspd / 100);
         }
         else{
-          ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) / (1 - atspd * 1.03 / 100);
+          ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) / (1 - atspd / 100);
         }
       }
       if (dal == 3) {
@@ -342,7 +342,7 @@
     <img src="1707821603849.png" height="50" width="50"><br>
 <form action="#">
       <label for="lang">비눗방울 주사위 유무를 선택하세요</label>
-      <select name="b" id="b">
+      <select name="버블" id="b">
         <option value="1">O</option>
         <option value="0">X</option>
       </select>
