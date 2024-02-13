@@ -84,6 +84,9 @@
       var lcs = Number(document.getElementById("lcs").value);
       var leye = Number(document.getElementById("leye").value);
       var deye = Number(document.getElementById("deye").value);
+      var b=document.getElementById("b").value;
+      var bcl=Number(document.getElementById("bcl").value);
+      var bpw=Number(document.getElementbyId("bpw").value);
       var dam;
       var res;
       clas -= 7;
@@ -121,10 +124,20 @@
         if (dill == "combo") {
           dam = ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;
         }
-        if (atspd * 1.03 > 95) {
-          dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / 0.05;
-        } else {
-          dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
+        if(b==0){
+          if (atspd * 1.03 > 95) {
+            dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / 0.05;
+          } else {
+            dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
+          }
+        }
+        else
+        {
+          if (atspd * 1.03 > 95) {
+            dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
+          } else {
+            dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3))) * leye * 0.1) / (1 - atspd * 1.03 / 100);
+          } 
         }
       }
       if (dal == 2) {
@@ -154,7 +167,12 @@
         if (dill == "combo") {
           dam = ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;
         }
-        dam = (0.95 * dam + dam * crit * 0.05) / (1 - atspd / 100);
+        if(b==0){
+          dam = (0.95 * dam + dam * crit * 0.05) / (1 - atspd / 100);
+        }
+        else{
+          ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) / (1 - atspd * 1.03 / 100);
+        }
       }
       if (dal == 3) {
         if (dill == "sav") {
@@ -318,8 +336,52 @@
     <option value="7">7</option>
 
     </select>
+</form><br>
+<form action="#">
+      <label for="lang">비눗방울 주사위 유무를 선택하세요</label>
+      <select name="b" id="b">
+        <option value="1">O</option>
+        <option value="0">X</option>
+      </select>
+    </form>
+    <form action="#" >
+
+  <label for="lang">비눗방울 주사위 클래스를 선택하세요</label>
+
+  <select name="법주사위" id="bcl" style="font-size: 1em;">
+
+    <option value="7">7</option>
+
+    <option value="8">8</option>
+
+    <option value="9">9</option>
+
+    <option value="10">10</option>
+
+    <option value="11">11</option>
+
+    <option value="12">12</option>
+
+    <option value="13">13</option>
+
+    <option value="14">14</option>
+
+    <option value="15">15</option>
+
+    </select>
 
 </form><br>
+<form action="#">
+      <label for="lang">비눗방울 주사위 파워업 상태를 선택하세요(충전 과열 제외)</label>
+      <select name="비누파워업" id="bpw">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </form>
+    
 <input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;"><br><br>
 
 결과 : <input type="text" id="res" style="font-size: 1em;">
