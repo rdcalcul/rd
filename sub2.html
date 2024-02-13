@@ -84,7 +84,7 @@
       var lcs = Number(document.getElementById("lcs").value);
       var leye = Number(document.getElementById("leye").value);
       var deye = Number(document.getElementById("deye").value);
-      var b=document.getElementById("b").value;
+      var b=Number(document.getElementById("b").value);
       var bcl=Number(document.getElementById("bcl").value);
       var bpw=Number(document.getElementbyId("bpw").value);
       var dam;
@@ -127,7 +127,8 @@
         if(b==0){
           if (atspd * 1.03 > 95) {
             dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / 0.05;
-          } else {
+          } 
+          else {
             dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
           }
         }
@@ -135,7 +136,8 @@
         {
           if (atspd * 1.03 > 95) {
             dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
-          } else {
+          } 
+          else {
             dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3))) * leye * 0.1) / (1 - atspd * 1.03 / 100);
           } 
         }
