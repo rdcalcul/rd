@@ -126,7 +126,7 @@
         if (dill == "combo") {
           dam = ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;
         }
-        if (b==0){
+        if (b==0 || (20+(bcl-7)*3+bpw*3)<=35){
           if (atspd * 1.03 > 95) {
             dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / 0.05;
           } 
@@ -136,10 +136,10 @@
         }
         if (b==1 && (20+(bcl-7)*3+bpw*3)>35) {
           if (atspd * 1.03 > 95) {
-            dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
+            dam = (((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
           } 
           else {
-            dam = (((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3) * dam + dam * crit * (1-(20+(bcl-7)*3+bpw*3))) * leye * 0.1) / (1 - atspd * 1.03 / 100);
+            dam = (((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / (1 - atspd * 1.03/ 100);
           } 
         }
       }
