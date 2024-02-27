@@ -128,7 +128,7 @@
         }
         if (b==0 || (20+(bcl-7)*3+bpw*3)<=35){
           if (atspd * 1.03 > 95) {
-            dam = ((0.65 * dam + 0.65 * dam * crit * 0.35) + (0.65 * dam + 0.65 * dam * crit * 0.35) * leye * 0.1) / 0.05;
+            dam = ((0.65 * dam +dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / 0.05;
           } 
           else {
             dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
@@ -141,14 +141,6 @@
           else {
             dam = (((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / (100 - atspd * 1.03/ 100);
           } 
-        }
-        else{
-          if(atspd*1.03>95){
-            dam = (0.65 * dam + dam * crit * 0.35)*1.7 / 0.05;
-          }
-          else{
-            dam = (0.65 * dam + dam * crit * 0.35)*1.7 /(1-atspd*1.03/100);
-          }
         }
       }
       if (dal == 2) {
