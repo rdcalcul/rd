@@ -104,6 +104,7 @@
       }
       if (dill == "ovl") {
         dam = 400;
+        stack-=1;
         while (stack > 0) {
           dam = dam + dam * (0.3 + 0.01 * clas);
           stack -= 1;
