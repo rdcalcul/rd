@@ -58,7 +58,15 @@
       var splitCount = unitWords.length;
       var resultArray = [];
       var resultString = "";
-
+      if(inputNumber>=10**80){
+        var a=0;
+        while(inputNumber>=10){
+          inputNumber/=10;
+          a+=1;
+        }
+        resultString=String(inputNumber)+"^"+String(a);
+      }
+      else{
       for (var i = 0; i < splitCount; i++) {
         var unitResult =
           (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
@@ -70,6 +78,7 @@
       for (var i = 0; i < resultArray.length; i++) {
         if (!resultArray[i]) continue;
         resultString = String(resultArray[i]) + unitWords[i] + resultString;
+      }
       }
       return resultString;
     }
