@@ -143,7 +143,7 @@
             dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
           }
         }
-        if (b==1 && (20+(bcl-7)*3+bpw*3)>35) {
+        else if (b==1 && (20+(bcl-7)*3+bpw*3)>35) {
           if (atspd * 1.03 > 95) {
             dam = (((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
           } 
