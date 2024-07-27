@@ -52,11 +52,11 @@
     function cal() {
       var mod1=Number(document.getElementById("mod1").value);
       var mod2=Number(document.getElementById("mod2").value);
-      var clas1 = Number(document.getElementById("clas").value);
+      var clas1 = Number(document.getElementById("clas1").value);
       var clas2=Number(document.getElementById("clas2").value);
-      var lev1 = Number(document.getElementById("lev").value);
+      var lev1 = Number(document.getElementById("lev1").value);
       var lev2 = Number(document.getElementById("lev2").value);
-      var stack;
+      var stack=Number(document.getElementById("stack").value);
       var res;
       clas1 -= 7;
       lev2-=1;
@@ -151,7 +151,7 @@
     </div>
     <div class="calculator-input">
       충전 주사위 레벨을 입력하세요(충전 레벨이 궁금하면 1을 입력):
-      <input type="text" id="lev2" style="font-size: 1.2em;">
+      <input type="text" id="lev1" style="font-size: 1.2em;">
     </div>
     <div class="calculator-input">
       영혼수집 주사위 파워업 상태를 입력하세요:
@@ -159,7 +159,7 @@
     </div>
     <div class="calculator-input">
       영혼수집 주사위의 스택을 입력하세요(영혼수집 스택이 궁금하면 0을 입력):
-      <input type="text" id="lev2" style="font-size: 1.2em;">
+      <input type="text" id="stack" style="font-size: 1.2em;">
     </div>
     <div class="result">
       데미지가 더욱 높아지는 레벨(스택):
