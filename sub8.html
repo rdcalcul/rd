@@ -50,58 +50,64 @@
   </style>
   <script>
     function cal() {
-      var mod1=Number(document.getElementById("mod1").value);
-      var mod2=Number(document.getElementById("mod2").value);
+      var mod1 = Number(document.getElementById("mod1").value);
+      var mod2 = Number(document.getElementById("mod2").value);
       var clas1 = Number(document.getElementById("clas1").value);
-      var clas2=Number(document.getElementById("clas2").value);
+      var clas2 = Number(document.getElementById("clas2").value);
       var lev1 = Number(document.getElementById("lev1").value);
       var lev2 = Number(document.getElementById("lev2").value);
-      var stack=Number(document.getElementById("stack").value);
-      var res;
-      clas1 -= 7;
-      lev2-=1;
-      clas2-=7;
-      if(mod1==1){
-        if(mod2==1){
-          var dam1=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
-          var dam2=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
-          while(dam1>dam2){
-            stack+=1;
-            dam2=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
-          }
-          res=stack;
-        }
-        if(mod2==2){
-          var dam2=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
-          var dam1=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
-          while(dam1>dam2){
-            lev1+=1;
-            dam2=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1)
-          }
-          res=lev1;
-        }
-      if(mod1==2){
-        if(mod2==1){
-          var dam1=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1)/1.3;
-          var dam2=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1))*2;
-          while(dam1>dam2){
-            stack+=1;
-            dam2=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1))*2
-          }
-          res=stack;
-        }
-        if(mod2==2){
-          var dam2=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
-          var dam1=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
-          while(dam1>dam2){
-            lev1+=1;
-            dam2=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1)
-          }
-          res=lev1;
-        }
-      document.getElementById("res").value=res;
+      var stack = Number(document.getElementById("stack").value);
+      var res = 0;
+
+      // 유효성 검사
+      if (isNaN(clas1) || isNaN(clas2) || isNaN(lev1) || isNaN(lev2) || isNaN(stack)) {
+        alert("모든 필드에 유효한 숫자를 입력하세요.");
+        return;
       }
-    }
+
+      clas1 -= 7;
+      lev2 -= 1;
+      clas2 -= 7;
+
+      if (mod1 == 1) {
+        if (mod2 == 1) {
+          var dam1 = (300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
+          var dam2 = (30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
+          while (dam1 > dam2) {
+            stack += 1;
+            dam2 = (30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
+          }
+          res = stack;
+        } else if (mod2 == 2) {
+          var dam2 = (300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
+          var dam1 = (30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
+          while (dam1 > dam2) {
+            lev1 += 1;
+            dam2 = (300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
+          }
+          res = lev1;
+        }
+      } else if (mod1 == 2) {
+        if (mod2 == 1) {
+          var dam1 = (300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1) / 1.3;
+          var dam2 = (30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1)) * 2;
+          while (dam1 > dam2) {
+            stack += 1;
+            dam2 = (30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1)) * 2;
+          }
+          res = stack;
+        } else if (mod2 == 2) {
+          var dam2 = (300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
+          var dam1 = (30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1));
+          while (dam1 > dam2) {
+            lev1 += 1;
+            dam2 = (300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
+          }
+          res = lev1;
+        }
+      }
+      
+      document.getElementById("res").value = res;
     }
   </script>
 </head>
@@ -112,21 +118,21 @@
   </div>
   <div class="calculator-container">
     <div class="calculator-input">
-      <label for="lang">DPS 비교인지 깡딜 비교인지 선택하세요</label>
+      <label for="mod1">DPS 비교인지 깡딜 비교인지 선택하세요</label>
       <select name="선택지" id="mod1" style="font-size: 1em;">
         <option value="1">깡딜</option>
         <option value="2">DPS</option>
       </select>
     </div>
     <div class="calculator-input">
-      <label for="lang">충전 레벨이 궁금한지 영혼 스택이 궁금한지 선택하세요.</label>
+      <label for="mod2">충전 레벨이 궁금한지 영혼 스택이 궁금한지 선택하세요.</label>
       <select name="선택지2" id="mod2" style="font-size: 1em;">
         <option value="1">영혼수집</option>
         <option value="2">충전</option>
       </select>
     </div>
     <div class="calculator-input">
-      <label for="lang">충전주사위의 클래스를 선택하세요.</label>
+      <label for="clas1">충전주사위의 클래스를 선택하세요.</label>
       <select name="주사위 클래스1" id="clas1" style="font-size: 1em;">
         <option value="7">7</option>
         <option value="8">8</option>
@@ -140,7 +146,7 @@
       </select>
     </div>
     <div class="calculator-input">
-      <label for="lang">영혼수집 주사위의 클래스를 선택하세요.</label>
+      <label for="clas2">영혼수집 주사위의 클래스를 선택하세요.</label>
       <select name="주사위 클래스2" id="clas2" style="font-size: 1em;">
         <option value="7">7</option>
         <option value="8">8</option>
@@ -154,20 +160,20 @@
       </select>
     </div>
     <div class="calculator-input">
-      충전 주사위 레벨을 입력하세요(충전 레벨이 궁금하면 1을 입력):
+      <label for="lev1">충전 주사위 레벨을 입력하세요(충전 레벨이 궁금하면 1을 입력):</label>
       <input type="text" id="lev1" style="font-size: 1.2em;">
     </div>
     <div class="calculator-input">
-      영혼수집 주사위 파워업 상태를 입력하세요:
+      <label for="lev2">영혼수집 주사위 파워업 상태를 입력하세요:</label>
       <input type="text" id="lev2" style="font-size: 1.2em;">
     </div>
     <div class="calculator-input">
-      영혼수집 주사위의 스택을 입력하세요(영혼수집 스택이 궁금하면 0을 입력):
+      <label for="stack">영혼수집 주사위의 스택을 입력하세요(영혼수집 스택이 궁금하면 0을 입력):</label>
       <input type="text" id="stack" style="font-size: 1.2em;">
     </div>
     <div class="result">
-      데미지가 더욱 높아지는 레벨(스택):
-      <input type="text" id="res">
+      <label for="res">데미지가 더욱 높아지는 레벨(스택):</label>
+      <input type="text" id="res" readonly>
     </div>
     <div class="calculator-input">
       <input type="button" value="계산하기" onclick="cal()">
