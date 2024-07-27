@@ -70,7 +70,7 @@
           }
           res=stack;
         }
-        else{
+        if(mod2==2){
           var dam2=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
           var dam1=(30 + (60 + 20 * clas + 20 * lev2) * (stack - 1));
           while(dam1>dam2){
@@ -78,7 +78,7 @@
           }
           res=lev1;
         }
-      else{
+      if(mod1==2){
         if(mod2==1){
           var dam1=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1)/1.3;
           var dam2=(30 + (60 + 20 * clas2 + 20 * lev2) * (stack - 1))*2;
@@ -87,7 +87,7 @@
           }
           res=stack;
         }
-        else{
+        if(mod2==2){
           var dam2=(300 + 30 * clas1 - 5 * lev1 + 5 * lev1 * lev1);
           var dam1=(30 + (60 + 20 * clas + 20 * lev2) * (stack - 1));
           while(dam1>dam2){
