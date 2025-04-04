@@ -124,6 +124,9 @@
         lev += 1;
         dam = 10 + 1.21*(6+clas*2) * stack * lev * lev;
       }
+      if (dill=="posik") {
+        lev-=1;
+        dam = ((100+10*clas+(20+2*clas)*lev)**2)/20;
       cridam = dam * crit / 100;
       dam = Math.floor(dam);
       cridam = Math.floor(cridam);
@@ -154,6 +157,7 @@
         <option value="sym">영혼수집</option>
         <option value="combo">콤보</option>
         <option value="magum">마검</option>
+        <option value="posik">포식자(배부름 기준)</option>
         <option value="ready">준비중....</option>
       </select>
       </div>
@@ -173,11 +177,11 @@
       </select>
     </div>
     <div class="calculator-input">
-      주사위 파워업 상태를 입력하세요(충전 과열 제외):
+      주사위 파워업 상태를 입력하세요(충전 과열 포식자 제외):
       <input type="text" id="lev" style="font-size: 1.2em;">
     </div>
     <div class="calculator-input">
-      만약 스택에(충전/과열/마검의 경우 눈금수) 따라 딜이 달라진다면 스택(충전 과열의 경우 레벨, 마검의 경우 눈금수)을 입력하세요:
+      만약 스택에(충전 과열 포식자의 경우 레벨, 마검의 경우 눈금수) 따라 딜이 달라진다면 스택(충전 과열 포식자의 경우 레벨, 마검의 경우 눈금수)을 입력하세요:
       <input type="text" id="stack" style="font-size: 1.2em;">
     </div>
     <div class="calculator-input">
