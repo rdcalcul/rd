@@ -125,8 +125,8 @@
         dam = 10 + 1.21*(6+clas*2) * stack * lev * lev;
       }
       if (dill=="posik") {
-        lev-=1;
-        dam = ((100+10*clas+(20+2*clas)*lev)**2)/20;
+        stack-=1;
+        dam = ((100+10*clas+(20+2*clas)*stack)**2)/20;
       }
       cridam = dam * crit / 100;
       dam = Math.floor(dam);
