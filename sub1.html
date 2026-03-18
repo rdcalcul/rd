@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>뽑스피 계산기</title>
-  <style>
-    body {
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>뽑스피 계산기</title>
+
+<style>
+body {
   font-family: Arial, sans-serif;
   margin: 20px;
   background-color: #f2f2f2;
@@ -47,41 +48,51 @@ button {
   margin-top: 15px;
   font-size: 18px;
 }
+</style>
 
-  </style>
-  <script>
-    function cal() {
-        var v1 = Number(document.getElementById("v1").value);
-        var v2 = Number(document.getElementById("v2").value);
-        var res = 0;
-        while((v1-v2)<=0){
-            v2=v2-v1;
-            v1=v1+10;
-            res=res+1;
-        }
-        document.getElementById("res").value = res;
-    }
-  </script>
+<script>
+function calc(){
+
+  let v1 = Number(document.getElementById("v1").value);
+  let v2 = Number(document.getElementById("v2").value);
+  let res = 0;
+
+  while((v1 - v2) <= 0){
+    v2 = v2 - v1;
+    v1 = v1 + 10;
+    res++;
+  }
+
+  document.getElementById("res").value = res + "회";
+}
+</script>
+
 </head>
+
 <body>
-  <div class="header">
-    <img src="img2.PNG" width="50" height="50" alt="뽑스피 계산기">
-    <span style="font-size: 1.5em; color: #333;">뽑을 수 있는 횟수 계산기!</span>
-  </div>
-  <div class="calculator-container">
-    <div class="calculator-input">
-      뽑스피: 
-      <input type="text" id="v1">
-    </div>
-    <div class="calculator-input">
-      보유 SP: 
-      <input type="text" id="v2">
-    </div>
-    <div class="calculator-input result">
-      뽑을 수 있는 횟수: 
-      <input type="text" id="res" readonly>
-    </div>
-    <input type="button" value="계산하기" onclick="cal()">
-  </div>
+
+<div class="header">
+  뽑스피 계산기
+</div>
+
+<div class="container">
+
+<h3>입력</h3>
+
+<label>뽑스피</label>
+<input type="text" id="v1">
+
+<label>보유 SP</label>
+<input type="text" id="v2">
+
+<button onclick="calc()">계산</button>
+
+<div class="result">
+결과:
+<input type="text" id="res" readonly>
+</div>
+
+</div>
+
 </body>
 </html>
