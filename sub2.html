@@ -134,30 +134,16 @@
         if (dill == "combo") {
           dam = ((8 + lev + 2 * clas) * (stack + 1) * stack / 2 + 50 * lev + 10 * clas) * 5 / 6;
         }
-        if (b==0 || (10+(bcl-7)*3+bpw*3)<=35){
-          if (atspd * 1.03 > 95) {
-            dam = ((0.65 * dam +dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / 0.05;
-          } 
-          else {
-            dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
-          }
-        }
-        else if (b==1 && bbt*((10+(bcl-7)*3+bpw*3))>leye*5) {
-          if (atspd * 1.03 > 95) {
-            dam = (((bbt*10+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-bbt*(10+(bcl-7)*3+bpw*3)/100)) + (bbt*(10+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-bbt*(10+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
-          } 
-          else {
-            dam = ((bbt*(10+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-bbt*(10+(bcl-7)*3+bpw*3)/100)) + (bbt*(10+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-bbt*(10+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / (1 - atspd * 1.03/ 100);
-          }
-        }
-        else{
-          if (atspd * 1.03 > 95) {
-            dam = (((leye*0.05+0.05) * dam*crit + dam *(1-(leye*0.05+0.05)))*(1+ leye * 0.1)) / 0.05;
-          } 
-          else {
-            dam = (((leye*0.05+0.05) * dam*crit + dam *(1-(leye*0.05+0.05)))*(1+ leye * 0.1)) / (1 - atspd * 1.03/ 100);
-          } 
-        }
+        let moonRate = 0.05 + 0.05 * leye;
+let bubbleRate = 0.05 + (bbt * (10 + (bcl - 7) * 3 + bpw * 3) / 100);
+let rate = Math.max(moonRate, bubbleRate);
+
+if (atspd * 1.03 > 95) {
+  dam = ((rate * dam * crit + dam * (1 - rate)) + (rate * dam * crit + dam * (1 - rate)) * leye * 0.1) / 0.05;
+} 
+else {
+  dam = ((rate * dam * crit + dam * (1 - rate)) + (rate * dam * crit + dam * (1 - rate)) * leye * 0.1) / (1 - atspd * 1.03 / 100);
+}
       }
       if (dal == 2) {
         if (dill == "sav") {
