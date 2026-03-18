@@ -4,65 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>한방 딜 계산기</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f2f2f2;
     }
+
     .header {
       text-align: center;
-      font-size: 54px;  /* Adjusted title font size */
+      font-size: 32px;
       margin-bottom: 20px;
-      color: #333;
     }
-    .calculator-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
 
-/* 입력 요소 전부 */
-select, input[type="text"], input[type="button"] {
-  width: 100%;
-  height: 40px;
-  font-size: 1em;
-  margin: 5px 0;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
 
-/* PC에서는 가로 배치 유지하고 싶으면 */
-@media (min-width: 768px) {
-  .calculator-input {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+    select, input[type="text"], button {
+      width: 100%;
+      height: 44px;
+      font-size: 16px;
+      margin: 6px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
 
-  .calculator-input input {
-    width: auto;
-    flex: 1;
-  }
-}
-    input[type="button"] {
+    button {
       background-color: #4CAF50;
-      color: #fff;
+      color: white;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
     }
-    input[type="button"]:hover {
+
+    button:hover {
       background-color: #45a049;
     }
+
     .result {
-      font-size: 1.2em;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-size: 18px;
     }
   </style>
+
   <script>
     function numberToKorean(number) {
       var inputNumber = number < 0 ? false : number;
@@ -71,6 +63,7 @@ select, input[type="text"], input[type="button"] {
       var splitCount = unitWords.length;
       var resultArray = [];
       var resultString = "";
+
       if(inputNumber>=10**80){
         var a=0;
         while(inputNumber>=10){
@@ -78,20 +71,19 @@ select, input[type="text"], input[type="button"] {
           a+=1;
         }
         resultString=String(inputNumber)+"×10^"+String(a);
-      }
-      else{
-      for (var i = 0; i < splitCount; i++) {
-        var unitResult =
-          (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
-        unitResult = Math.floor(unitResult);
-        if (unitResult > 0) {
-          resultArray[i] = unitResult;
+      } else {
+        for (var i = 0; i < splitCount; i++) {
+          var unitResult =
+            (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+          unitResult = Math.floor(unitResult);
+          if (unitResult > 0) {
+            resultArray[i] = unitResult;
+          }
         }
-      }
-      for (var i = 0; i < resultArray.length; i++) {
-        if (!resultArray[i]) continue;
-        resultString = String(resultArray[i]) + unitWords[i] + resultString;
-      }
+        for (var i = 0; i < resultArray.length; i++) {
+          if (!resultArray[i]) continue;
+          resultString = String(resultArray[i]) + unitWords[i] + resultString;
+        }
       }
       return resultString;
     }
@@ -104,6 +96,7 @@ select, input[type="text"], input[type="button"] {
       var lev = Number(document.getElementById("lev").value);
       var dam;
       var cridam;
+
       lev -= 1;
       clas -= 7;
 
@@ -116,7 +109,7 @@ select, input[type="text"], input[type="button"] {
       }
       if (dill == "ovl") {
         dam = 400;
-        stack-=1;
+        stack -= 1;
         while (stack > 0) {
           dam = dam + dam * (0.3 + 0.01 * clas);
           stack -= 1;
@@ -137,75 +130,77 @@ select, input[type="text"], input[type="button"] {
         dam = 10 + 1.21*(6+clas*2) * stack * lev * lev;
       }
       if (dill=="posik") {
-        stack-=1;
+        stack -= 1;
         dam = ((100+10*clas+(20+2*clas)*stack)**2)/20;
       }
+
       cridam = dam * crit / 100;
+
       dam = Math.floor(dam);
       cridam = Math.floor(cridam);
+
       document.getElementById("dam").value = numberToKorean(dam);
       document.getElementById("cridam").value = numberToKorean(cridam);
     }
   </script>
 </head>
+
 <body>
+
   <div class="header">
-    <img src="img3.PNG" height="50" width="110" alt="한방 딜 계산기">
-    <span>한방 딜 계산기!</span>
+    <img src="img3.PNG" width="60" alt="">
+    <div>한방 딜 계산기</div>
   </div>
-  <div class="calculator-container">
-    <div class="calculator-input">
-      크리티컬을 입력해 주세요:
-      <input type="text" id="crit" style="font-size: 1.2em;">
-    </div>
-    <form action="#">
-      <div class="calculator-input">
-      <label for="lang">딜주사위를 선택하세요</label>
-      <select name="딜주사위" id="dill" style="font-size: 1em;">
-        <option value="void">선택하세요</option>
-        <option value="sol">태양(준비중</option>
-        <option value="sav">수호자</option>
-        <option value="ovl">과열</option>
-        <option value="rech">충전</option>
-        <option value="sym">영혼수집</option>
-        <option value="combo">콤보</option>
-        <option value="magum">마검</option>
-        <option value="posik">포식자(배부름 기준)</option>
-        <option value="ready">준비중....</option>
-      </select>
-      </div>
-    </form>
-    <div class="calculator-input">
-      <label for="lang">주사위 클래스를 선택하세요.</label>
-      <select name="주사위 클래스" id="clas" style="font-size: 1em;">
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-      </select>
-    </div>
-    <div class="calculator-input">
-      주사위 파워업 상태를 입력하세요(충전 과열 포식자 제외):
-      <input type="text" id="lev" style="font-size: 1.2em;">
-    </div>
-    <div class="calculator-input">
-      만약 스택에(충전 과열 포식자의 경우 레벨, 콤보의 경우 콤보수, 마검의 경우 눈금수) 따라 딜이 달라진다면 스택(충전 과열 포식자의 경우 레벨, 콤보의 경우 콤보수, 마검의 경우 눈금수)을 입력하세요:
-      <input type="text" id="stack" style="font-size: 1.2em;">
-    </div>
-    <div class="calculator-input">
-      <input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;">
-    </div>
+
+  <div class="container">
+
+    크리티컬:
+    <input type="text" id="crit">
+
+    딜 주사위 선택:
+    <select id="dill">
+      <option value="void">선택하세요</option>
+      <option value="sav">수호자</option>
+      <option value="ovl">과열</option>
+      <option value="rech">충전</option>
+      <option value="sym">영혼수집</option>
+      <option value="combo">콤보</option>
+      <option value="magum">마검</option>
+      <option value="posik">포식자(배부름 기준)</option>
+    </select>
+
+    클래스:
+    <select id="clas">
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+    </select>
+
+    파워업 레벨:
+    <input type="text" id="lev">
+
+    스택 / 콤보 / 눈금:
+    <input type="text" id="stack">
+
+    <button onclick="cal()">계산하기</button>
+
     <div class="result">
-      일반 데미지 : <input type="text" id="dam" style="font-size: 1.2em;">
+      일반 데미지:
+      <input type="text" id="dam" readonly>
     </div>
+
     <div class="result">
-      크리티컬 데미지 : <input type="text" id="cridam" style="font-size: 1.2em;">
+      크리티컬 데미지:
+      <input type="text" id="cridam" readonly>
     </div>
+
   </div>
+
 </body>
 </html>
