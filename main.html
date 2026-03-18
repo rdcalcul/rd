@@ -32,15 +32,23 @@
       gap: 20px;
     }
     .calculator-buttons button {
-      height: 80px;
-      width: 200px;
-      font-size: 1.7em;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  width: 100%;              /* 🔥 꽉 채우기 */
+  max-width: 220px;         /* 🔥 PC에서 너무 커지는거 방지 */
+  min-height: 70px;         /* 🔥 최소 높이 */
+  height: auto;             /* 🔥 내용에 따라 늘어남 */
+  font-size: 1.3em;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* 🔥 핵심 */
+  white-space: normal;      /* 줄바꿈 허용 */
+  word-break: keep-all;     /* 한글 자연스럽게 줄바꿈 */
+  padding: 10px;
+  text-align: center;
+}
     .calculator-buttons button:hover {
       background-color: #45a049;
     }
