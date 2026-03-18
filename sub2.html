@@ -96,6 +96,7 @@
       var b=Number(document.getElementById("b").value);
       var bcl=Number(document.getElementById("bcl").value);
       var bpw=Number(document.getElementById("bpw").value);
+      var bbt=Number(document.getElementById("bbt").value);
       var dam;
       var res;
       clas -= 7;
@@ -141,7 +142,7 @@
             dam = ((0.65 * dam + dam * crit * 0.35) + (0.65 * dam + dam * crit * 0.35) * leye * 0.1) / (1 - atspd * 1.03 / 100);
           }
         }
-        else if (b==1 && (10+(bcl-7)*3+bpw*3)>35) {
+        else if (b==1 && bbt*(10+(bcl-7)*3+bpw*3)>35) {
           if (atspd * 1.03 > 95) {
             dam = (((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) + ((20+(bcl-7)*3+bpw*3)/100 * dam*crit + dam * (1-(20+(bcl-7)*3+bpw*3)/100)) * leye * 0.1) / 0.05;
           } 
@@ -287,7 +288,7 @@
     </form>
     <!-- Additional forms... -->
     <div class="calculator-input">
-      만약 스택에(충전/과열의 경우 레벨) 따라 딜이 달라진다면 스택(충전의 경우 레벨)을 입력하세요 :
+      만약 스택에(충전/과열의 경우 레벨, 콤보의 경우 콤보수) 따라 딜이 달라진다면 스택(충전/과열의 경우 레벨, 콤보의 경우 콤보수)을 입력하세요 :
       <input type="text" id="stack">
     </div>
     <img src="1706625686468.png" height="50" width="50"><br>
@@ -399,6 +400,13 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+    </form>
+<form action="#">
+      <label for="lang">비눗방울 주사위 특성 유무를 선택하세요</label>
+      <select name="버특" id="bbt">
+        <option value="1">O</option>
+        <option value="2">X</option>
+        </select>
     </form>
     
 <input type="button" value="계산하기" onclick="cal()" style="font-size: 1em;"><br><br>
