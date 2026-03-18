@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메두사 → 해일 계산기</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f2f2f2;
+}
+
+.header {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+select, input[type="text"], button {
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+  margin: 6px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.result {
+  margin-top: 15px;
+  font-size: 18px;
+}
+</style>
+
+<script>
+function calc(){
+
+  let m_clas = Number(document.getElementById("m_clas").value) - 7;
+  let m_lev = Number(document.getElementById("m_lev").value) - 1;
+  let w_clas = Number(document.getElementById("w_clas").value) - 7;
+  let m_count = Number(document.getElementById("m_count").value);
+
+  let medusaPercent = 0.11 + 0.01 * m_clas + 0.01 * m_lev;
+  let curPercent = 0.11 + 0.005 * w_clas;
+  let lostPercent = 0.36 + 0.04 * w_clas;
+
+  let hp = 1;
+
+  // 메두사 n회
+  for(let i = 0; i < m_count; i++){
+    hp -= hp * medusaPercent;
+
+    if(hp <= 0){
+      document.getElementById("result").value = "해일 0회 (메두사로 처치)";
+      return;
+    }
+  }
+
+  // 해일
+  let waveCount = 0;
+
+  while(hp > 0){
+
+    let dmg = Math.max(
+      hp * curPercent,
+      (1 - hp) * lostPercent
+    );
+
+    hp -= dmg;
+    waveCount++;
+
+    if(Math.abs(hp) < 1e-9){
+      hp = 0;
+      break;
+    }
+
+    if(waveCount > 1000) break;
+  }
+
+  document.getElementById("result").value = "해일 " + waveCount + "회 필요";
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="header">메두사 → 해일 최소 횟수 계산기</div>
+
+<div class="container">
+
+<!-- 🔥 메두사 영역 -->
+<h3>메두사</h3>
+
+<label>클래스</label>
+<select id="m_clas">
+  <option>7</option><option>8</option><option>9</option>
+  <option>10</option><option>11</option><option>12</option>
+  <option>13</option><option>14</option><option>15</option>
+</select>
+
+<label>레벨</label>
+<select id="m_lev">
+  <option>1</option><option>2</option><option>3</option>
+  <option>4</option><option>5</option>
+</select>
+
+<!-- 🔥 여기로 이동 -->
+<label>메두사 사용 횟수</label>
+<input type="text" id="m_count" value="1">
+
+
+<!-- 🔥 해일 영역 -->
+<h3>해일</h3>
+
+<label>클래스</label>
+<select id="w_clas">
+  <option>7</option><option>8</option><option>9</option>
+  <option>10</option><option>11</option><option>12</option>
+  <option>13</option><option>14</option><option>15</option>
+</select>
+
+<button onclick="calc()">계산</button>
+
+<div class="result">
+결과:
+<input type="text" id="result" readonly>
+</div>
+
+</div>
+
+</body>
+</html>
