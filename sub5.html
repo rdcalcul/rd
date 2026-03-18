@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>크리티컬 계산기</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,60 +15,47 @@
 
     .header {
       text-align: center;
-      font-size: 2em;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    .calculator-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
 
-/* 입력 요소 전부 */
-select, input[type="text"], input[type="button"] {
-  width: 100%;
-  height: 40px;
-  font-size: 1em;
-  margin: 5px 0;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
+    select, input[type="text"], button {
+      width: 100%;
+      height: 44px;
+      font-size: 16px;
+      margin: 6px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
 
-/* PC에서는 가로 배치 유지하고 싶으면 */
-@media (min-width: 768px) {
-  .calculator-input {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .calculator-input input {
-    width: auto;
-    flex: 1;
-  }
-}
-
-    input[type="button"] {
+    button {
       background-color: #4CAF50;
-      color: #fff;
+      color: white;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
-      font-size: 1.2em; /* Adjusted font size */
     }
 
-    input[type="button"]:hover {
+    button:hover {
       background-color: #45a049;
     }
 
     .result {
-      font-size: 1.2em;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-size: 18px;
     }
   </style>
+
   <script>
     function cal() {
       var v1 = Number(document.getElementById("v1").value);
@@ -83,27 +72,29 @@ select, input[type="text"], input[type="button"] {
 </head>
 
 <body>
+
   <div class="header">
-    <img src="img4.jpg" height="50" alt="크리티컬 계산기">
-    <font size=7>크리티컬 계산기!</font>
+    <img src="img4.jpg" width="60" alt="">
+    <div>크리티컬 계산기</div>
   </div>
-  <div class="calculator-container">
-    <div class="calculator-input">
-      일반 데미지:
-      <input type="text" id="v1">
-    </div>
-    <div class="calculator-input">
-      크리티컬 데미지:
-      <input type="text" id="v2">
-    </div>
+
+  <div class="container">
+
+    일반 데미지:
+    <input type="text" id="v1">
+
+    크리티컬 데미지:
+    <input type="text" id="v2">
+
+    <button onclick="cal()">계산하기</button>
+
     <div class="result">
       상대 크리티컬:
-      <input type="text" id="res">
+      <input type="text" id="res" readonly>
     </div>
-    <div class="calculator-input">
-      <input type="button" value="계산하기" onclick="cal()">
-    </div>
+
   </div>
+
 </body>
 
 </html>
