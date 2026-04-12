@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>왜곡-모노리스 계산기</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+  margin: 0;
+}
+
+.header {
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+input, select, button {
+  width: 100%;
+  height: 45px;
+  margin: 8px 0;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.big {
+  font-size: 24px;
+  font-weight: bold;
+}
+</style>
+
+<script>
+function calc(){
+    const monoClass = Number(document.getElementById("monoClass").value);
+  const distClass = Number(document.getElementById("distClass").value);
+
+  let found = false;
+  let bestMono = -1;
+  let bestDist = -1;
+
+  // m, d는 내부적으로 0~4지만 실제 레벨은 1~5
+  for (let m = 0; m <= 4; m++) {
+    for (let d = 0; d <= 4; d++) {
+
+      // 모노리스 퍼센트
+      let monoPercent = 30 + (m * 2.5) + (monoClass * 3.5);
+
+      // 왜곡 배율
+      let distMult = 1 + 0.25 + (d * 0.10) + (distClass * 0.20);
+
+      let finalRatio = (monoPercent / 100) * distMult;
+
+      if (finalRatio >= 1) {
+        found = true;
+
+        if (bestMono === -1 || (m + d) < (bestMono + bestDist)) {
+          bestMono = m;
+          bestDist = d;
+        }
+      }
+    }
+  }
+
+  const result = document.getElementById("result");
+
+  if (found) {
+    result.innerHTML = "원킬 가능<br>모노리스: <span class='big'>" + (bestMono+1) + "레벨</span> / 왜곡: <span class='big'>" + (bestDist+1) + "레벨</span>";
+  } else {
+    result.innerHTML = "원킬 불가능 (파워업 4까지)<br><small>최대 비율: " + ( ( (30 + (4*2.5) + (monoClass*3.5)) / 100) * (1 + 0.25 + (4*0.10) + (distClass*0.20)) ).toFixed(2) + "배</small>";
+  }
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="header">왜곡-모노리스 원킬 계산기</div>
+
+<div class="container">
+
+
+
+<label>모노리스 주사위 클래스</label>
+<select id="monoClass">
+  <option value="0">7</option>
+  <option value="1">8</option>
+  <option value="2">9</option>
+  <option value="3">10</option>
+  <option value="4">11</option>
+  <option value="5">12</option>
+  <option value="6">13</option>
+  <option value="7">14</option>
+  <option value="8">15</option>
+</select>
+
+<label>왜곡 주사위 클래스</label>
+<select id="distClass">
+  <option value="0">7</option>
+  <option value="1">8</option>
+  <option value="2">9</option>
+  <option value="3">10</option>
+  <option value="4">11</option>
+  <option value="5">12</option>
+  <option value="6">13</option>
+  <option value="7">14</option>
+  <option value="8">15</option>
+</select>
+
+<button onclick="calc()">계산</button>
+
+<div class="result" id="result">-</div>
+
+</div>
+
+</body>
+</html>
