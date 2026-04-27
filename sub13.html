@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배리어 주사위 계산기</title>
+
+<style>
+body {
+  font-family: Arial;
+  background:#f2f2f2;
+  margin:20px;
+}
+
+.header {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+.header img {
+  width:60px;
+  height:auto;
+}
+
+.container {
+  max-width:600px;
+  margin:auto;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+}
+
+label {
+  font-weight:bold;
+  display:block;
+  margin-top:10px;
+}
+
+input, select, button {
+  width:100%;
+  height:44px;
+  margin:6px 0;
+  box-sizing:border-box;
+}
+
+button {
+  background:#4CAF50;
+  color:white;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+}
+
+.result input {
+  font-weight:bold;
+  background:#f9fff9;
+}
+</style>
+
+<script>
+function cal() {
+
+  var clas = Number(document.getElementById("clas").value);
+  var lev = Number(document.getElementById("lev").value);
+  var stack = Number(document.getElementById("stack").value) || 0;
+  var dice = Number(document.getElementById("dice").value) || 1;
+  var target = Number(document.getElementById("target").value) || 0;
+
+  var base = 1.5 + 0.2*(clas-5) + 0.2*(lev-1);
+
+  var currentStack = stack;
+  var sure = 0;
+
+  while (currentStack > 0) {
+
+    if (base * currentStack < 100) break;
+
+    sure++;
+
+    currentStack -= dice;
+  }
+
+  document.getElementById("base").value = base.toFixed(2) + "%";
+  document.getElementById("sure").value = sure + "회";
+  document.getElementById("max").value = sure + "회";
+  document.getElementById("result").value = (sure >= target) ? "가능" : "불가능";
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    cal();
+  }
+});
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+  <img src="image5.webp" alt="icon">
+  배리어 주사위 계산기
+</div>
+
+<div class="container">
+
+<label>클래스</label>
+<select id="clas">
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+</select>
+
+<label>파워업 레벨</label>
+<select id="lev">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+
+<label>주사위 개수</label>
+<input type="number" id="dice">
+
+<label>스택</label>
+<input type="number" id="stack">
+
+<label>목표 확정 방어 횟수</label>
+<input type="number" id="target">
+
+<button onclick="cal()">계산</button>
+
+<div class="result">
+기본 확률
+<input id="base" readonly>
+</div>
+
+<div class="result">
+확정 방어 횟수
+<input id="sure" readonly>
+</div>
+
+<div class="result">
+최대 확정 방어 횟수
+<input id="max" readonly>
+</div>
+
+<div class="result">
+목표 달성 여부
+<input id="result" readonly>
+</div>
+
+</div>
+
+</body>
+</html>
